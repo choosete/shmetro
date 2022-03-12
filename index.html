@@ -350,7 +350,10 @@
                             <div class="window-mockup" style="display:none;">
                                 <div class="window-bar"></div>
                             </div>
+
+                            <!-- svg容器 -->
                             <div id="mapplic" width="800px;" height="800px;" style="width:800px;height:800px;"></div>
+
                         </div>
                         <!--路径查询表单-->
                         <div class="formFindRoute" id="formFindRoute">
@@ -425,9 +428,9 @@
             </div>
 
             <!-- 线路图脚本部分 Scripts -->
-            <script type="text/javascript" src="/assets/jquery.min.js"></script>
-            <script type="text/javascript"
-                src="http://marketing.cyberspaceit.cn/interface/metromap/js/hammer.min.js"></script>
+            <script type="text/javascript" src="./assets/jquery.min.js"></script>
+            <!-- <script type="text/javascript"
+                src="http://marketing.cyberspaceit.cn/interface/metromap/js/hammer.min.js"></script> -->
             <script type="text/javascript"
                 src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.easing.js"></script>
             <script type="text/javascript"
@@ -435,7 +438,7 @@
             <script type="text/javascript"
                 src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script>
             <script type="text/javascript"
-                src="http://marketing.cyberspaceit.cn/interface/metromap/mapplic/mapplic.js"></script>
+                src="./assets/mapplic.js"></script>
             <script type="text/javascript"
                 src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script>
             <script type="text/javascript">
@@ -455,7 +458,7 @@
                     });
 
                     $('#mapplic').mapplic({
-                        source: 'http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx',
+                        source: 'http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx', // 返回json文件
                         selector: 'g > [id^=\'ST\']',
                         height: 800,
                         animate: false,
