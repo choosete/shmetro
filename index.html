@@ -453,14 +453,18 @@
 
                     });
 
-                    $("#mapplic").bind("mapOnChange", function (event, prarm) {
-                        //console.log($(prarm.map).html()); 
-                    });
+                    // $("#mapplic").bind("mapOnChange", function (event, prarm) {
+                        
+                    //     console.log({event, prarm})
+                        
+                    // });
 
+                    
+                    // 在页面内生成svg地铁图
                     $('#mapplic').mapplic({
-                        source: 'http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx', // 返回json文件
+                        source: './assets/metromap.json', // 地铁站点位置信息
                         selector: 'g > [id^=\'ST\']',
-                        height: 800,
+                        height: 800, // svg 容器的高度
                         animate: false,
                         sidebar: false,
                         minimap: false,
@@ -472,6 +476,8 @@
                         maxscale: 2,
                         zoom: true
                     });
+
+                    
 
                     $('.usage').click(function (e) {
                         e.preventDefault();
