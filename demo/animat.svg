@@ -1,0 +1,38 @@
+
+  <svg width="320" height="320">
+
+    <!-- 故障点 -->
+    <g>
+      <defs>
+        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+          <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:0" />
+          <stop offset="100%" style="stop-color:rgb(255, 0, 64);stop-opacity:1" />
+        </radialGradient>
+      </defs>
+      <circle cx="160" cy="160" r="20" fill="url(#grad1)">
+        <animate attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+
+    <!-- 路径动画 -->
+    <g>
+      <circle cx="80" cy="100" r="30" fill="red">
+        <animateMotion path="m0 0 h300 z" begin="1s" dur="30s" repeatCount="indefinite" rotate="auto" />
+      </circle>
+    </g>
+
+
+    <!-- 渐变 -->
+
+    <g>
+      <defs>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+          <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <path  d="m0 0 h300 v30 h-300 z" fill="url(#grad2)"/>
+    </g>
+
+  </svg>

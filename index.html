@@ -336,498 +336,404 @@
     <head>
 
     <body>
-        <div id="accessNull"></div>
 
-        <div id="container">
+        <!-- svg容器 -->
+        <div id="mapplic"></div>
+        <!-- <div id="accessNull"></div> -->
 
-
-            <div class="envolp">
-                <div class="inner_stinfo">
-                    <div class="inner_stinfowrap">
-                        <!--线路属性-->
-                        <!--单线线路图-->
-                        <div class="map-container">
-                            <div class="window-mockup" style="display:none;">
-                                <div class="window-bar"></div>
-                            </div>
-
-                            <!-- svg容器 -->
-                            <div id="mapplic" width="800px;" height="800px;" style="width:800px;height:800px;"></div>
-
-                        </div>
-                        <!--路径查询表单-->
-                        <div class="formFindRoute" id="formFindRoute">
-                            <table width="220" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td style="width:158px;padding-top:13px;padding-left:5px;">
-                                        <div
-                                            style="width:44px; float:left; margin-bottom:10px; line-height:20px; color:#000">
-                                            起点：</div>
-                                        <div class="from_stat_id" style="display:none;"></div>
-                                        <div class="from_stat_name"
-                                            style=" margin-bottom:10px; float:left; width:106px; border:1px solid #ddd; line-height:22px; height:22px">
-                                        </div> <br />
-
-                                        <div style="width:44px; float:left;line-height:20px; color:#000">终点：</div>
-                                        <div class="to_stat_id" style="display:none;"></div>
-                                        <div class="to_stat_name"
-                                            style=" margin-bottom:10px; float:left; width:106px; border:1px solid #ddd; line-height:22px; height:22px">
-                                        </div>
-                                    </td>
-                                    <td> <input type=button onclick="findRoute();" class="chazanjiu" /> </td>
-                                </tr>
-                            </table>
-
-                            <style>
-                                .chufa {
-                                    float: left;
-                                }
-
-                                .mudi {
-                                    float: left;
-                                }
-
-                                .search {
-                                    float: left;
-                                }
-
-                                .search input {
-                                    background: #06C;
-                                    color: #fff
-                                }
-
-                                .from_stat_id {
-                                    width: 75px;
-                                    border: 1px solid #ddd;
-                                    float: left;
-                                    height: 20px;
-                                }
-
-                                .to_stat_id {
-                                    width: 75px;
-                                    border: 1px solid #ddd;
-                                    float: left;
-                                    height: 20px;
-                                }
-                            </style>
-
-
-
-                        </div>
-
-                        <!--线路相关属性-->
-                        <div class="shvsistname">
-                            <div class="shvsistnamewrap">
-                                <span class="stxt" id="stName">
-                                    <!--站名-->
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 线路图脚本部分 Scripts -->
-            <script type="text/javascript" src="./assets/jquery.min.js"></script>
-            <!-- <script type="text/javascript"
+        <!-- 线路图脚本部分 Scripts -->
+        <script type="text/javascript" src="./assets/jquery.min.js"></script>
+        <!-- <script type="text/javascript"
                 src="http://marketing.cyberspaceit.cn/interface/metromap/js/hammer.min.js"></script> -->
-            <script type="text/javascript"
-                src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.easing.js"></script>
-            <script type="text/javascript"
-                src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.mousewheel.js"></script>
-            <script type="text/javascript"
-                src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script>
-            <script type="text/javascript"
-                src="./assets/mapplic.js"></script>
-            <script type="text/javascript"
-                src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script>
-            <script type="text/javascript">
-                var lines;
-                $(document).ready(function () {
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.easing.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.mousewheel.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script>
+        <script type="text/javascript" src="./assets/mapplic.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script>
+        <script type="text/javascript">
+            var lines;
+            $(document).ready(function () {
 
 
-                    //请求获得线路色卡
-                    jQuery.getJSON("http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=lines", function (data) {
+                //请求获得线路色卡
+                jQuery.getJSON("http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=lines", function (data) {
 
-                        lines = data;
+                    lines = data;
 
-                    });
-
-                    // $("#mapplic").bind("mapOnChange", function (event, prarm) {
-                        
-                    //     console.log({event, prarm})
-                        
-                    // });
-
-                    
-                    // 在页面内生成svg地铁图
-                    $('#mapplic').mapplic({
-                        source: './assets/metromap.json', // 地铁站点位置信息
-                        selector: 'g > [id^=\'ST\']',
-                        height: 800, // svg 容器的高度
-                        animate: false,
-                        sidebar: false,
-                        minimap: false,
-                        locations: true,
-                        deeplinking: true,
-                        fullscreen: true,
-                        hovertip: true,
-                        developer: true,
-                        maxscale: 2,
-                        zoom: true
-                    });
-
-                    
-
-                    $('.usage').click(function (e) {
-                        e.preventDefault();
-
-                        $('.editor-window').slideToggle(200);
-                    });
-
-                    $('.editor-window .window-mockup').click(function () {
-                        $('.editor-window').slideUp(200);
-                    });
-
-
-                    $("#mapplic").bind("mapOnClick", function (event, prarm) {
-                        console.log($(prarm.pin).position().top);
-                        console.log($(prarm.pin).attr('id'));
-
-                        getStationInfo($(prarm.pin).attr('id'));
-
-
-                    });
-
-                    if (getQueryStringByName('location') != "") {
-                        getStationInfo(decodeURI(getQueryStringByName('location')))
-                    }
-                    else {
-                        //getStationInfo('station0123');
-                        var url = document.location.href;
-                        if (url.indexOf('?') >= 0) {
-                            url += "&location=ST83-RMGC";
-                        }
-                        else {
-                            url += "?location=ST83-RMGC";
-                        }
-                        //document.location.href = url;
-                    }
                 });
 
-                //获取站点信息
-                function getStationInfo(stat_code) {
-                    //console.log($(prarm.pin).position().top);
-                    //console.log($(prarm.pin).attr('id'));
-                    var station_code;
-                    var url, url_fl;
+                // $("#mapplic").bind("mapOnChange", function (event, prarm) {
 
-                    if (stat_code.indexOf('station') < 0) {
-                        station_code = stat_code.substring(2, stat_code.length);
-                        url = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=stationInfo&station_code=" + station_code;
-                        url_fl = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=fltimeA&station_code=" + station_code;
+                //     console.log({event, prarm})
+
+                // });
+
+
+                // 在页面内生成svg地铁图
+                $('#mapplic').mapplic({
+                    source: './assets/metromap.json', // 地铁站点位置信息
+                    selector: 'g > [id^=\'ST\']',
+                    // height: 1000, // svg 容器的高度
+                    height: '100vh',
+                    animate: false,
+                    sidebar: false, // 左侧边的搜索栏 - 站名搜索
+                    minimap: false,
+                    locations: true,
+                    deeplinking: true,
+                    fullscreen: true,
+                    hovertip: true,
+                    developer: true,
+                    maxscale: 2,
+                    zoom: true,
+                    // hovertip: false,
+                });
+
+
+
+                $('.usage').click(function (e) {
+                    e.preventDefault();
+
+                    $('.editor-window').slideToggle(200);
+                });
+
+                $('.editor-window .window-mockup').click(function () {
+                    $('.editor-window').slideUp(200);
+                });
+
+
+                // TODO 站点点击,设置气泡涟漪效果
+                // svg 容器#mapplic 站点点击事件 展示的是站点信息
+                $("#mapplic").bind("mapOnClick", function (event, prarm) {
+
+                    // console.log(prarm)
+
+                    // FIX 站点名称绘制重复了, svg源文件就是重复了绘制了节点
+
+                    // console.log($(prarm.pin).position().top);
+                    // console.log($(prarm.pin).attr('id'));
+
+                    getStationInfo($(prarm.pin).attr('id'));
+
+
+                });
+
+                if (getQueryStringByName('location') != "") {
+                    getStationInfo(decodeURI(getQueryStringByName('location')))
+                }
+                else {
+                    //getStationInfo('station0123');
+                    var url = document.location.href;
+                    if (url.indexOf('?') >= 0) {
+                        url += "&location=ST83-RMGC";
                     }
                     else {
-                        station_code = stat_code.substring(7, stat_code.length);
-                        //alert(station_code)
-                        url = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=stationInfo&stat_id=" + station_code;
-                        url_fl = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=fltime&stat_id=" + stat_id;
+                        url += "?location=ST83-RMGC";
                     }
-
-                    jQuery.getJSON(url, function (data) {
-                        //alert(JSON.stringify(data));
-                        //alert(data[0].entrance_info);
-
-                        //修改气泡框
-                        $('.mapplic-tooltip-content').html('');
-                        var l = getExchangeLine(stat_code);
-                        for (var i = 0; i < l.length; i++) {
-                            var line_color;
-                            for (var j = 0; j < lines.length; j++) {
-                                if (lines[j].line_no == l[i]) {
-                                    line_color = lines[j].color;
-                                    break;
-                                }
-                            }
-                            if (l[i] == 41) {
-                                $('.mapplic-tooltip-content').html($('.mapplic-tooltip-content').html() + "<span class=\"idl ln" + l[i] + "\"><span class=\"lineno1\">浦江线</span></span>");
-                            } else {
-                                $('.mapplic-tooltip-content').html($('.mapplic-tooltip-content').html() + "<span class=\"idl ln" + l[i] + "\"><span class=\"lineno\">" + l[i] + "</span><span class=\"ln-text\">号线</span></span>");
-                            }
-                        }
-                        $('.mapplic-tooltip-content').css("font-size", "9px");
-
-                        $('.mapplic-tooltip-content').html($('.mapplic-tooltip-content').html() + "<div class=\"toolbarRoute\" ><input id='setFromStation' type=\"button\" class=\"qidian\" onclick=\"setFromStation('" + data[0].stat_id + "','" + data[0].name_cn + "');\" /></br> <input id='setFromStation' type=\"button\" class=\"zhongdian\" onclick=\"setToStation('" + data[0].stat_id + "','" + data[0].name_cn + "');\" /></div>" + " ");
-
-
-                        //站点名称
-                        $('#stName').text(data[0].name_cn);
-                        //更新出入口信息
-                        //$('#stEntranceInfo').text(data[0].entrance_info);
-                        var rv = "";
-                        var li = data[0].entrance_info.split(',');
-                        for (var i = 0; i < li.length; i++) {
-                            var lii = li[i].split(':');
-                            if (lii.length > 1) {
-                                rv += "\n\r" + "<div class=\"shvsiextentitem\">" +
-                                    "\n\r" + "    <div class=\"shvsiextentlft\" >" + lii[0] + "</div>" +
-                                    "\n\r" + "    <div class=\"shvsiextentrgt\" >" + lii[1] + "</div>" +
-                                    "\n\r" + "</div>";
-                            }
-                        }
-                        $('#stEntranceInfo').html(rv);
-                        //更新厕所信息
-                        //$('#stToiletInfo').text(data[0].toilet_position);
-                        rv = "";
-                        li = data[0].toilet_position.split(',');
-                        for (var i = 0; i < li.length; i++) {
-                            var lii = li[i].split(':');
-                            if (lii.length > 1) {
-                                rv += "\n\r" + "<div class=\"shvsitoiletitem\">" +
-                                    "\n\r" + "    <div class=\"shvsitoiletlft\" >" + lii[0] + "</div>" +
-                                    "\n\r" + "    <div class=\"shvsitoiletrgt\" >" + lii[1] + "</div>" +
-                                    "\n\r" + "</div>";
-                            } else {
-                                rv += "\n\r" + "<div class=\"shvsitoiletitem\">" +
-                                    //"\n\r" + "    <div class=\"shvsitoiletlft\" >" + lii[0] + "</div>" +
-                                    "\n\r" + "    <div class=\"shvsitoiletrgt\" >" + li[i] + "</div>" +
-                                    "\n\r" + "</div>";
-                            }
-                        }
-                        $('#stToiletInfo').html(rv);
-                        //更新无障碍电梯信息
-                        //$('#stElevatorInfo').text();
-                        rv = "";
-                        li = data[0].elevator.split(',');
-                        for (var i = 0; i < li.length; i++) {
-                            var lii = li[i].split(':');
-                            if (lii.length > 1) {
-                                rv += "\n\r" + "<div class=\"shvsiliftitem\">" +
-                                    "\n\r" + "    <div class=\"shvsiliftlft\" >" + lii[0] + "</div>" +
-                                    "\n\r" + "    <div class=\"shvsiliftrgt\" >" + lii[1] + "</div>" +
-                                    "\n\r" + "</div>";
-                            }
-                            else {
-                                rv += "\n\r" + "<div class=\"shvsiliftitem\">" +
-                                    //"\n\r" + "    <div class=\"shvsiliftlft\" >" + li[i] + "</div>" +
-                                    "\n\r" + "    <div class=\"shvsiliftrgt\" >" + li[i] + "</div>" +
-                                    "\n\r" + "</div>";
-                            }
-                        }
-                        $('#stElevatorInfo').html(rv);
-                    });
-
-                    jQuery.getJSON(url_fl, function (data) {
-                        //alert(JSON.stringify(data));
-                        //alert(data[0].entrance_info);
-                        var out_str = "";
-                        //更新首末班车信息
-                        for (var i = 0; i < data.length; i++) {
-
-                            var line_color;
-                            for (var j = 0; j < lines.length; j++) {
-                                if (lines[j].line_no == data[i].line) {
-                                    line_color = lines[j].color;
-                                    break;
-                                }
-                            }
-
-                            out_str += "\n\r" + "<div class=\"shvsifltimeitem\">" +
-                                "\n\r" + "    <div class=\"shvsifltimelft\" >" + data[i].description + "<div class=\"lineStamp\" style=\"background-color:" + line_color + "\">" + data[i].line + "</div>" + "</div>" +
-                                "\n\r" + "    <div class=\"shvsifltimergt\" >" + data[i].first_time + "/" + data[i].last_time + "</div>" +
-                                "\n\r" + "</div>";
-                            //out_str += (data[i].direction + "\t 首班车：" + data[i].first_time + "\t 末班车：" + data[i].last_time + "\t" + data[i].description + "<br/>");
-                        }
-                        $('#stFLTime').html(out_str);
-
-                    });
-
+                    //document.location.href = url;
                 }
-                //获得换乘线路
-                function getExchangeLine(station_code) {
-                    var l = new Array();
+            });
 
-                    station_code = station_code.substring(2, station_code.length);
-                    console.log(station_code);
+            //获取站点信息 tooltip 弹窗信息
+            function getStationInfo(stat_code) {
+                //console.log($(prarm.pin).position().top);
+                //console.log($(prarm.pin).attr('id'));
+                // console.log('stat_code', stat_code)  // ST40-XZL
+                var station_code;
+                var url, url_fl;
 
-                    var ex_code = station_code.substring(0, station_code.indexOf('-'));
+                if (stat_code.indexOf('station') < 0) {
+                    station_code = stat_code.substring(2, stat_code.length);
+                    url = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=stationInfo&station_code=" + station_code;
+                    url_fl = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=fltimeA&station_code=" + station_code;
+                }
+                else {
+                    station_code = stat_code.substring(7, stat_code.length);
+                    // alert(station_code)
+                    url = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=stationInfo&stat_id=" + station_code;
+                    url_fl = "http://marketing.cyberspaceit.cn/interface/metromap/metromap.aspx?func=fltime&stat_id=" + stat_id;
+                }
 
-                    console.log(ex_code);
-                    console.log(parseInt(ex_code, 16));
+                jQuery.getJSON(url, function (data) {
+                    //alert(JSON.stringify(data));
+                    //alert(data[0].entrance_info);
 
-                    for (var i = 0; i < 56; i++) {
+                    // console.log('data', data)
 
-                        var ll = "1";
-
-                        for (var j = 0; j < i; j++) {
-                            ll += "0";
-                        }
-
-
-                        console.log(parseInt(ll, 2) + "-" + i + "-" + parseInt(ex_code, 16));
-
-                        console.log((parseInt(ll, 2) & parseInt(ex_code, 16)));
-
-                        console.log((parseInt(ll, 2) / Math.pow(2, 28)) + "-" + i + "-" + (parseInt(ex_code, 16) / Math.pow(2, 28)));
-
-                        console.log((parseInt(ll, 2) / Math.pow(2, 28)) & (parseInt(ex_code, 16) / Math.pow(2, 28)));
-
-
-                        //console.log(parseInt(ll, 2));
-                        //console.log(parseInt(ex_code, 16));
-                        if (i <= 28) {
-                            //低28位
-                            if ((parseInt(ll, 2) & parseInt(ex_code, 16)) == parseInt(ll, 2)) {
-                                l.push(i + 1);
-
-                                console.log("线路;" + (i + 1));
+                    //修改气泡框
+                    $('.mapplic-tooltip-content').html('');
+                    var l = getExchangeLine(stat_code);
+                    for (var i = 0; i < l.length; i++) {
+                        var line_color;
+                        for (var j = 0; j < lines.length; j++) {
+                            if (lines[j].line_no == l[i]) {
+                                line_color = lines[j].color;
+                                break;
                             }
+                        }
+                        if (l[i] == 41) {
+                            $('.mapplic-tooltip-content').html($('.mapplic-tooltip-content').html() + "<span class=\"idl ln" + l[i] + "\"><span class=\"lineno1\">浦江线</span></span>");
                         } else {
-                            //高28位
-                            if (((parseInt(ll, 2) / Math.pow(2, 28)) & Math.floor(parseInt(ex_code, 16) / Math.pow(2, 28))) == (parseInt(ll, 2) / Math.pow(2, 28))) {
-                                l.push(i + 1);
-
-                                console.log("线路;" + (i + 1));
-                            }
+                            $('.mapplic-tooltip-content').html($('.mapplic-tooltip-content').html() + "<span class=\"idl ln" + l[i] + "\"><span class=\"lineno\">" + l[i] + "</span><span class=\"ln-text\">号线</span></span>");
                         }
                     }
+                    $('.mapplic-tooltip-content').css("font-size", "9px");
 
-                    return l;
-                }
-                /*
-                //获得换乘线路
-                function getExchangeLine(station_code) {
-                    var l =new Array();
-    
-                    station_code = station_code.substring(2, station_code.length);
-                    
-                    var ex_code = station_code.substring(0, station_code.indexOf('-'));
-    
-                    console.log(ex_code);
-    
-                    for (var i = 0; i < 21; i++) {
-    
-    
-                        var ll = Math.pow(10, i).toString(); //这种做法只能到21位
-    
-                        console.log(parseInt(ll, 2));
-                        console.log(parseInt(ex_code, 16));
-                        
+                    $('.mapplic-tooltip-content').html($('.mapplic-tooltip-content').html() + "<div class=\"toolbarRoute\" ><input id='setFromStation' type=\"button\" class=\"qidian\" onclick=\"setFromStation('" + data[0].stat_id + "','" + data[0].name_cn + "');\" /></br> <input id='setFromStation' type=\"button\" class=\"zhongdian\" onclick=\"setToStation('" + data[0].stat_id + "','" + data[0].name_cn + "');\" /></div>" + " ");
+
+
+                    //站点名称
+                    $('#stName').text(data[0].name_cn);
+                    //更新出入口信息
+                    //$('#stEntranceInfo').text(data[0].entrance_info);
+                    var rv = "";
+                    var li = data[0].entrance_info.split(',');
+                    for (var i = 0; i < li.length; i++) {
+                        var lii = li[i].split(':');
+                        if (lii.length > 1) {
+                            rv += "\n\r" + "<div class=\"shvsiextentitem\">" +
+                                "\n\r" + "    <div class=\"shvsiextentlft\" >" + lii[0] + "</div>" +
+                                "\n\r" + "    <div class=\"shvsiextentrgt\" >" + lii[1] + "</div>" +
+                                "\n\r" + "</div>";
+                        }
+                    }
+                    $('#stEntranceInfo').html(rv);
+                    //更新厕所信息
+                    //$('#stToiletInfo').text(data[0].toilet_position);
+                    rv = "";
+                    li = data[0].toilet_position.split(',');
+                    for (var i = 0; i < li.length; i++) {
+                        var lii = li[i].split(':');
+                        if (lii.length > 1) {
+                            rv += "\n\r" + "<div class=\"shvsitoiletitem\">" +
+                                "\n\r" + "    <div class=\"shvsitoiletlft\" >" + lii[0] + "</div>" +
+                                "\n\r" + "    <div class=\"shvsitoiletrgt\" >" + lii[1] + "</div>" +
+                                "\n\r" + "</div>";
+                        } else {
+                            rv += "\n\r" + "<div class=\"shvsitoiletitem\">" +
+                                //"\n\r" + "    <div class=\"shvsitoiletlft\" >" + lii[0] + "</div>" +
+                                "\n\r" + "    <div class=\"shvsitoiletrgt\" >" + li[i] + "</div>" +
+                                "\n\r" + "</div>";
+                        }
+                    }
+                    $('#stToiletInfo').html(rv);
+                    //更新无障碍电梯信息
+                    //$('#stElevatorInfo').text();
+                    rv = "";
+                    li = data[0].elevator.split(',');
+                    for (var i = 0; i < li.length; i++) {
+                        var lii = li[i].split(':');
+                        if (lii.length > 1) {
+                            rv += "\n\r" + "<div class=\"shvsiliftitem\">" +
+                                "\n\r" + "    <div class=\"shvsiliftlft\" >" + lii[0] + "</div>" +
+                                "\n\r" + "    <div class=\"shvsiliftrgt\" >" + lii[1] + "</div>" +
+                                "\n\r" + "</div>";
+                        }
+                        else {
+                            rv += "\n\r" + "<div class=\"shvsiliftitem\">" +
+                                //"\n\r" + "    <div class=\"shvsiliftlft\" >" + li[i] + "</div>" +
+                                "\n\r" + "    <div class=\"shvsiliftrgt\" >" + li[i] + "</div>" +
+                                "\n\r" + "</div>";
+                        }
+                    }
+                    $('#stElevatorInfo').html(rv);
+                });
+
+                jQuery.getJSON(url_fl, function (data) {
+                    //alert(JSON.stringify(data));
+                    //alert(data[0].entrance_info);
+                    var out_str = "";
+                    //更新首末班车信息
+                    for (var i = 0; i < data.length; i++) {
+
+                        var line_color;
+                        for (var j = 0; j < lines.length; j++) {
+                            if (lines[j].line_no == data[i].line) {
+                                line_color = lines[j].color;
+                                break;
+                            }
+                        }
+
+                        out_str += "\n\r" + "<div class=\"shvsifltimeitem\">" +
+                            "\n\r" + "    <div class=\"shvsifltimelft\" >" + data[i].description + "<div class=\"lineStamp\" style=\"background-color:" + line_color + "\">" + data[i].line + "</div>" + "</div>" +
+                            "\n\r" + "    <div class=\"shvsifltimergt\" >" + data[i].first_time + "/" + data[i].last_time + "</div>" +
+                            "\n\r" + "</div>";
+                        //out_str += (data[i].direction + "\t 首班车：" + data[i].first_time + "\t 末班车：" + data[i].last_time + "\t" + data[i].description + "<br/>");
+                    }
+                    $('#stFLTime').html(out_str);
+
+                });
+
+            }
+            //获得换乘线路
+            function getExchangeLine(station_code) {
+                var l = new Array();
+
+                station_code = station_code.substring(2, station_code.length);
+                console.log(station_code);
+
+                var ex_code = station_code.substring(0, station_code.indexOf('-'));
+
+                console.log(ex_code);
+                console.log(parseInt(ex_code, 16));
+
+                for (var i = 0; i < 56; i++) {
+
+                    var ll = "1";
+
+                    for (var j = 0; j < i; j++) {
+                        ll += "0";
+                    }
+
+
+                    // console.log(parseInt(ll, 2) + "-" + i + "-" + parseInt(ex_code, 16));
+
+                    // console.log((parseInt(ll, 2) & parseInt(ex_code, 16)));
+
+                    // console.log((parseInt(ll, 2) / Math.pow(2, 28)) + "-" + i + "-" + (parseInt(ex_code, 16) / Math.pow(2, 28)));
+
+                    // console.log((parseInt(ll, 2) / Math.pow(2, 28)) & (parseInt(ex_code, 16) / Math.pow(2, 28)));
+
+
+                    //console.log(parseInt(ll, 2));
+                    //console.log(parseInt(ex_code, 16));
+                    if (i <= 28) {
+                        //低28位
                         if ((parseInt(ll, 2) & parseInt(ex_code, 16)) == parseInt(ll, 2)) {
                             l.push(i + 1);
-    
-                            console.log("线路;"+(i + 1));
+
+                            console.log("线路;" + (i + 1));
+                        }
+                    } else {
+                        //高28位
+                        if (((parseInt(ll, 2) / Math.pow(2, 28)) & Math.floor(parseInt(ex_code, 16) / Math.pow(2, 28))) == (parseInt(ll, 2) / Math.pow(2, 28))) {
+                            l.push(i + 1);
+
+                            console.log("线路;" + (i + 1));
                         }
                     }
-    
-                    return l;
-                }*/
-                function setFromStation(stat_id, name_cn) {
-                    if (stat_id.toString().length < 4) {
-                        stat_id = "0" + stat_id;
-                    }
-                    $('.from_stat_id').text(stat_id);
-                    $('.from_stat_name').text(name_cn);
-
                 }
 
-                function setToStation(stat_id, name_cn) {
-                    if (stat_id.toString().length < 4) {
-                        stat_id = "0" + stat_id;
+                return l;
+            }
+            /*
+            //获得换乘线路
+            function getExchangeLine(station_code) {
+                var l =new Array();
+ 
+                station_code = station_code.substring(2, station_code.length);
+                
+                var ex_code = station_code.substring(0, station_code.indexOf('-'));
+ 
+                console.log(ex_code);
+ 
+                for (var i = 0; i < 21; i++) {
+ 
+ 
+                    var ll = Math.pow(10, i).toString(); //这种做法只能到21位
+ 
+                    console.log(parseInt(ll, 2));
+                    console.log(parseInt(ex_code, 16));
+                    
+                    if ((parseInt(ll, 2) & parseInt(ex_code, 16)) == parseInt(ll, 2)) {
+                        l.push(i + 1);
+ 
+                        console.log("线路;"+(i + 1));
                     }
-                    $('.to_stat_id').text(stat_id);
-                    $('.to_stat_name').text(name_cn);
+                }
+ 
+                return l;
+            }*/
+            function setFromStation(stat_id, name_cn) {
+                if (stat_id.toString().length < 4) {
+                    stat_id = "0" + stat_id;
+                }
+                $('.from_stat_id').text(stat_id);
+                $('.from_stat_name').text(name_cn);
+
+            }
+
+            function setToStation(stat_id, name_cn) {
+                if (stat_id.toString().length < 4) {
+                    stat_id = "0" + stat_id;
+                }
+                $('.to_stat_id').text(stat_id);
+                $('.to_stat_name').text(name_cn);
+            }
+
+            function findRoute() {
+                if ($('.from_stat_id').text() != "" && $('.to_stat_id').text() != "") {
+                    window.open("/cphc/index.htm?ctl_shmetro_shmetroroutepriceform1_hdf_ss=" + $('.from_stat_id').text() + "&ctl_shmetro_shmetroroutepriceform1_hdf_ds=" + $('.to_stat_id').text() + "&t=");
+                } else if ($('.from_stat_id').text() == "") {
+                    alert("请选择起点！");
+                } else if ($('.to_stat_id').text() == "") {
+                    alert("请选择终点！");
                 }
 
-                function findRoute() {
-                    if ($('.from_stat_id').text() != "" && $('.to_stat_id').text() != "") {
-                        window.open("/cphc/index.htm?ctl_shmetro_shmetroroutepriceform1_hdf_ss=" + $('.from_stat_id').text() + "&ctl_shmetro_shmetroroutepriceform1_hdf_ds=" + $('.to_stat_id').text() + "&t=");
-                    } else if ($('.from_stat_id').text() == "") {
-                        alert("请选择起点！");
-                    } else if ($('.to_stat_id').text() == "") {
-                        alert("请选择终点！");
-                    }
-
+            }
+            function getQueryString() {
+                var result = location.search.match(new RegExp("[\?\&][^\?\&]+=[^\?\&]+", "g"));
+                for (var i = 0; i < result.length; i++) {
+                    result[i] = result[i].substring(1);
                 }
-                function getQueryString() {
-                    var result = location.search.match(new RegExp("[\?\&][^\?\&]+=[^\?\&]+", "g"));
-                    for (var i = 0; i < result.length; i++) {
-                        result[i] = result[i].substring(1);
-                    }
-                    return result;
+                return result;
+            }
+
+            //根据QueryString参数名称获取值
+            function getQueryStringByName(name) {
+                var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+                if (result == null || result.length < 1) {
+                    return "";
                 }
-
-                //根据QueryString参数名称获取值
-                function getQueryStringByName(name) {
-                    var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
-                    if (result == null || result.length < 1) {
-                        return "";
-                    }
-                    return result[1];
+                return result[1];
+            }
+            //根据QueryString参数索引获取值
+            function getQueryStringByIndex(index) {
+                if (index == null) {
+                    return "";
                 }
-                //根据QueryString参数索引获取值
-                function getQueryStringByIndex(index) {
-                    if (index == null) {
-                        return "";
-                    }
-                    var queryStringList = getQueryString();
-                    if (index >= queryStringList.length) {
-                        return "";
-                    }
-                    var result = queryStringList[index];
-                    var startIndex = result.indexOf("=") + 1;
-                    result = result.substring(startIndex);
-                    return result;
+                var queryStringList = getQueryString();
+                if (index >= queryStringList.length) {
+                    return "";
                 }
+                var result = queryStringList[index];
+                var startIndex = result.indexOf("=") + 1;
+                result = result.substring(startIndex);
+                return result;
+            }
 
 
 
-                /*				 var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                    window.addEventListener("scroll", scrollEvent, false);
-            
-                    function scrollEvent() {
-                        scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                        console.log("scrollTop:"+scrollTop)
-                       if (scrollTop > 300) {
-                            try {
-                              document.querySelector(".formFindRoute").style.position="fixed";
-                              document.querySelector(".formFindRoute").style.top="30px";
-                              document.querySelector(".formFindRoute").style.marginLeft="606px";
-                               document.querySelector(".formFindRoute").style.right="auto";
-                                document.querySelector(".formFindRoute").style.zIndex="99999";
-                            } catch (e) {
-            
-                            } 
-                        } else {
-                            try {
-                                 document.querySelector(".formFindRoute").style.position="absolute";
-                                 document.querySelector(".formFindRoute").style.zIndex="99999";
-                            } catch (e) {
-            
-                            }
+            /*				 var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                window.addEventListener("scroll", scrollEvent, false);
+        
+                function scrollEvent() {
+                    scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    console.log("scrollTop:"+scrollTop)
+                   if (scrollTop > 300) {
+                        try {
+                          document.querySelector(".formFindRoute").style.position="fixed";
+                          document.querySelector(".formFindRoute").style.top="30px";
+                          document.querySelector(".formFindRoute").style.marginLeft="606px";
+                           document.querySelector(".formFindRoute").style.right="auto";
+                            document.querySelector(".formFindRoute").style.zIndex="99999";
+                        } catch (e) {
+        
+                        } 
+                    } else {
+                        try {
+                             document.querySelector(".formFindRoute").style.position="absolute";
+                             document.querySelector(".formFindRoute").style.zIndex="99999";
+                        } catch (e) {
+        
                         }
-                    }  
-                    */
-            </script>
-            <style type="text/css">
-                .lineStamp {
-                    width: 16px;
-                    height: 16px;
-                    /*background: red;*/
-                    -moz-border-radius: 16px;
-                    -webkit-border-radius: 16px;
-                    border-radius: 16px;
-                    border: solid 1px grey;
-                    text-align: center;
-                    float: left;
-                    margin: 2px;
-                    color: White;
-                    padding: 4px;
-                    line-height: 14px;
-                    font-size: 12px;
-                }
-            </style>
-        </div>
+                    }
+                }  
+                */
+        </script>
     </body>
 
 </html>

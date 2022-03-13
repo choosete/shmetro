@@ -4,11 +4,11 @@
  * http://www.mapplic.com
  */
 
-(function($) {
+(function ($) {
 
-	var Mapplic = function() {
+	var Mapplic = function () {
 		var self = this;
-		
+
 		self.o = {
 			source: 'locations.json',
 			selector: '[id^=landmarks] > *',
@@ -29,21 +29,23 @@
 			maxscale: 4,
 			skin: '',
 			zoom: true
-			
+
 		};
 
 		var map;
-		
-		self.init = function(el, params) {
+
+		self.init = function (el, params) {
 			// Extend options
 			self.o = $.extend(self.o, params);
 
 			self.x = 0;
 			self.y = 0;
-			self.scale = 3.5;
+			self.scale = 3.5; // self 是Mapplic的 实例对象
+
+			
 
 			self.el = el.addClass('mapplic-element mapplic-loading').addClass(self.o.skin).height(self.o.height);
-			
+
 			// Disable modules when landmark mode is active
 			if (self.o.landmark) {
 				self.o.sidebar = false;
@@ -53,29 +55,29 @@
 
 			if (typeof self.o.source === 'string') {
 				// Loading .json file with AJAX
-				$.getJSON(self.o.source, function(data) { // Success
+				$.getJSON(self.o.source, function (data) { // Success
 					processData(data);
 					self.el.removeClass('mapplic-loading');
-					
+
 					//deal this div chang event
-					self.el.bind('DOMNodeInserted', function(e) { 
+					self.el.bind('DOMNodeInserted', function (e) {
 						//alert('element now contains: ' + $(e.target).html()); 
 						//if (this.console) 
 						//console.log( el.attr("id") + " | " + Object.prototype.toString.call(e.target).match(/\[object (.*?)\]/)[1]);
 						var obj_name = Object.prototype.toString.call(e.target).match(/\[object (.*?)\]/)[1];
 
 						//if map doc change trigger the map OnChange, Phil
-						if (obj_name=='SVGSVGElement')
+						if (obj_name == 'SVGSVGElement')
 						//if (e.target.className=='mapplic-map-image') 
 						{
 							map = e.target;
-							self.el.trigger("mapOnChange",{"map":e.target}); 
-							
-							
+							self.el.trigger("mapOnChange", { "map": e.target });
+
+
 						}
-					}); 
-					
-				}).fail(function() { // Failure: couldn't load JSON file, or it is invalid.
+					});
+
+				}).fail(function () { // Failure: couldn't load JSON file, or it is invalid.
 					console.error('Couldn\'t load map data. (Make sure you are running the script through a server and not just opening the html file with your browser)');
 					self.el.removeClass('mapplic-loading').addClass('mapplic-error');
 					alert('Data file missing or invalid!');
@@ -87,199 +89,208 @@
 				self.el.removeClass('mapplic-loading');
 			}
 
-			$.fn.extend({setStation:function(stationCode,status){
-				//alert('setStation!');
-				var st = $('#station'+stationCode);
-				switch(status)
-				{
-					case 0:
-						st.css('fill','#FFFFFF');
-						break;							
-					case 1:
-						st.css('fill','#00FF00');
-						break;						
-					case 2:
-						st.css('fill','#FFFF00');
-						break;
-					case 3:
-						st.css('fill','#FF0000');
-						break;
-				}
-			}});
-			
-            //��ɫ
-			$.fn.extend({setSegment:function(stationCode1,stationCode2,status){
-				var sg=$('#segment'+stationCode1+stationCode2);
-				switch(status)
-				{
-					case 0:
-						sg.css('stroke','#0094d8');
-						break;							
-					case 1:
-						sg.css('stroke','#00FF00');
-						break;						
-					case 2:
-						sg.css('stroke','#FFFF00');
-						break;
-					case 3:
-						sg.css('stroke','#FF0000');
-						break;
-				}
-			}});
-			
-            //�߶θ�ԭԭɫ
 			$.fn.extend({
-			    setSegmentLineColor: function (stationCode1, stationCode2) {
-			        var sg = $('#segment' + stationCode1 + stationCode2);
-			        var lineNo = parseInt(stationCode1.substr(0, 2));
-			        for (var l in lines) {
-                        if (lines[l].line_no == lineNo)
-			                sg.css('stroke', lines[l].color);
-			        }
+				setStation: function (stationCode, status) {
+					//alert('setStation!');
+					var st = $('#station' + stationCode);
+					console.log('st', st)
+					switch (status) {
+						case 0:
+							st.css('fill', '#FFFFFF');
+							break;
+						case 1:
+							st.css('fill', '#00FF00');
+							break;
+						case 2:
+							st.css('fill', '#FFFF00');
+							break;
+						case 3:
+							st.css('fill', '#FF0000');
+							break;
+					}
+				}
+			});
 
-			    }
+			//��ɫ
+			$.fn.extend({
+				setSegment: function (stationCode1, stationCode2, status) {
+					var sg = $('#segment' + stationCode1 + stationCode2);
+					switch (status) {
+						case 0:
+							sg.css('stroke', '#0094d8');
+							break;
+						case 1:
+							sg.css('stroke', '#00FF00');
+							break;
+						case 2:
+							sg.css('stroke', '#FFFF00');
+							break;
+						case 3:
+							sg.css('stroke', '#FF0000');
+							break;
+					}
+				}
+			});
+
+			//�߶θ�ԭԭɫ
+			$.fn.extend({
+				setSegmentLineColor: function (stationCode1, stationCode2) {
+					var sg = $('#segment' + stationCode1 + stationCode2);
+					var lineNo = parseInt(stationCode1.substr(0, 2));
+					for (var l in lines) {
+						if (lines[l].line_no == lineNo)
+							sg.css('stroke', lines[l].color);
+					}
+
+				}
 			});
 
 			//select line
-			$.fn.extend({selectLine:function(line){
-				
-				if (line!=0){
-					//����վ���
-					$('g > [id=\'allstations\']').hide();
-				
-					var css_selector;
-					
-					for(var i=1;i<=16;i++)
-					{
-						if (i<10)
-							css_selector = 'g > [id=\'line0'+i+'\']';
+			$.fn.extend({
+				selectLine: function (line) {
+
+					if (line != 0) {
+						//����վ���
+						$('g > [id=\'allstations\']').hide();
+
+						var css_selector;
+
+						for (var i = 1; i <= 16; i++) {
+							if (i < 10)
+								css_selector = 'g > [id=\'line0' + i + '\']';
+							else
+								css_selector = 'g > [id=\'line' + i + '\']';
+
+							console.log(css_selector);
+
+							$(css_selector).hide();
+						}
+
+						//$('g > [id^=\'line\']').hide();	
+
+						if (parseInt(line) < 10)
+							css_selector = 'g > [id^=\'line0' + line + '\']';
 						else
-							css_selector = 'g > [id=\'line'+i+'\']';
-							
+							css_selector = 'g > [id^=\'line' + line + '\']';
+
+
+						$(css_selector).show();
+					}
+					else {
+						$('g > [id^=\'line\']').show();
+						$('g > [id=\'allstations\']').show();
+					}
+				}
+			});
+
+
+			//set line monchrome
+			$.fn.extend({
+				lineMonchrome: function () {
+
+					$('g[id^=\'line\'] [id^=\'segment\']').css('stroke', '#949494');
+
+				}
+			});
+
+			//set line Color,������·��ɫ
+			$.fn.extend({
+				lineColor: function (line) {
+
+					//$('g[id^=\'line\'] [id^=\'segment\']').css('stroke','#949494');
+					for (var i = 0; i < line.length; i++) {
+						if (line[i].line_no < 10)
+							css_selector = 'g[id=\'line0' + line[i].line_no + '\'] [id^=\'segment\']';
+						else
+							css_selector = 'g[id=\'line' + line[i].line_no + '\'] [id^=\'segment\']';
+
 						console.log(css_selector);
-						
-						$(css_selector).hide();	
+
+						$(css_selector).css('stroke', line[i].color);
 					}
 
-					//$('g > [id^=\'line\']').hide();	
-					
-					if (parseInt(line)<10)
-						css_selector = 'g > [id^=\'line0'+line+'\']';
-					else
-						css_selector = 'g > [id^=\'line'+line+'\']';
-						
-				
-					$(css_selector).show();
 				}
-				else{
-					$('g > [id^=\'line\']').show();	
-					$('g > [id=\'allstations\']').show();
-				}
-			}});
-			
-			
-			//set line monchrome
-			$.fn.extend({lineMonchrome:function(){
-				
-				$('g[id^=\'line\'] [id^=\'segment\']').css('stroke','#949494');
-			
-			}});
-			
-			//set line Color,������·��ɫ
-			$.fn.extend({lineColor:function(line){
-				
-				//$('g[id^=\'line\'] [id^=\'segment\']').css('stroke','#949494');
-				for(var i=0;i<line.length;i++)
-				{
-					if (line[i].line_no<10)
-						css_selector = 'g[id=\'line0'+line[i].line_no+'\'] [id^=\'segment\']';
-					else
-						css_selector = 'g[id=\'line'+line[i].line_no+'\'] [id^=\'segment\']';
-						
-					console.log(css_selector);
-					
-					$(css_selector).css('stroke',line[i].color);
-				}
-			
-			}});
-			
+			});
+
 			//set line focus,�۽�һ����·
-			$.fn.extend({lineFocus:function(line,num){
-				
-				$('g[id^=\'line\'] [id^=\'segment\']').css('stroke','#949494');
-				//$('g[id^=\'line\'] [id^=\'segment\']').css('stroke','#949494');
-				for(var i=0;i<line.length;i++)
-				{
-				
-					if (line[i].line_no==num)
-					{
-						if (line[i].line_no<10)
-							css_selector = 'g[id=\'line0'+line[i].line_no+'\'] [id^=\'segment\']';
-						else
-							css_selector = 'g[id=\'line'+line[i].line_no+'\'] [id^=\'segment\']';
-							
-						console.log(css_selector);
-						
-						$(css_selector).css('stroke',line[i].color);
+			$.fn.extend({
+				lineFocus: function (line, num) {
+
+					$('g[id^=\'line\'] [id^=\'segment\']').css('stroke', '#949494');
+					//$('g[id^=\'line\'] [id^=\'segment\']').css('stroke','#949494');
+					for (var i = 0; i < line.length; i++) {
+
+						if (line[i].line_no == num) {
+							if (line[i].line_no < 10)
+								css_selector = 'g[id=\'line0' + line[i].line_no + '\'] [id^=\'segment\']';
+							else
+								css_selector = 'g[id=\'line' + line[i].line_no + '\'] [id^=\'segment\']';
+
+							console.log(css_selector);
+
+							$(css_selector).css('stroke', line[i].color);
+						}
 					}
+
 				}
-			
-			}});			
-			
+			});
+
 			//���ŵ�ָ��վ��
-			$.fn.extend({focusTo:function(stat_id,scale){
-				//self.scale=2;
-				moveTo(self.x, self.y, self.scale, 400);
-				var svg = Snap("#mapplic svg");
-				console.log($("g > [id^=\'ST83-RMGC\']").length);
-				var st=$("g > [id^=\'ST83-RMGC\']");
-				st.css("opacity",0);
-				var p=svg.select('#'+st.attr("id"));
-				var p_pos = p.getBBox();
-				
-	
-				/*var t = svg.paper.circle(p_pos.cx, p_pos.cy, 12).attr({
-																	"id":"T"+$(this).attr("id"),
-																	"fill":"#FFFFFF"
-																		});*/
-				
-				//var t = Snap.fragment('<circle cx="'+p_pos.cx+'" cy="'+p_pos.cy+'" r="100" id="XXFFFSSS"></circle>');
-				var t=Snap.load("toiletinside.svg", function (f) {
-					g = f.select("g");
-					g.attr({
-					"transform":"translate("+(p_pos.cx-14.0)+","+(p_pos.cy-14.0)+")"
+			$.fn.extend({
+				focusTo: function (stat_id, scale) {
+					//self.scale=2;
+					moveTo(self.x, self.y, self.scale, 400);
+					var svg = Snap("#mapplic svg");
+					console.log($("g > [id^=\'ST83-RMGC\']").length);
+					var st = $("g > [id^=\'ST83-RMGC\']");
+					st.css("opacity", 0);
+					var p = svg.select('#' + st.attr("id"));
+					var p_pos = p.getBBox();
+
+
+					/*var t = svg.paper.circle(p_pos.cx, p_pos.cy, 12).attr({
+																		"id":"T"+$(this).attr("id"),
+																		"fill":"#FFFFFF"
+																			});*/
+
+					//var t = Snap.fragment('<circle cx="'+p_pos.cx+'" cy="'+p_pos.cy+'" r="100" id="XXFFFSSS"></circle>');
+					var t = Snap.load("toiletinside.svg", function (f) {
+						g = f.select("g");
+						g.attr({
+							"transform": "translate(" + (p_pos.cx - 14.0) + "," + (p_pos.cy - 14.0) + ")"
+						});
+						g.insertBefore(p)
 					});
-					g.insertBefore(p)
-				});
-				
-				console.log("��ʼ��ͼ���Ͻ����꣺"+self.x+","+self.y);
-				var s_left = self.x;
-				var s_top = self.y;
-				console.log("ѡ��վ���SVG�ľ���λ��" + p_pos.cx+","+p_pos.cy);
-				console.log("��ǰ��ͼ�Ĵ�С��"+self.map.width()+","+self.map.height());
-				var s_width = self.map.width();
-				var s_height = self.map.height();
-				var s_scale = self.scale
-				console.log("SCALE:"+self.scale);
-				var m =svg.select('g');
-				var mp =m.getBBox();
-				console.log("��ͼ�ľ��Դ�С��" + parseFloat(svg.attr("width"))+","+parseFloat(svg.attr("height")));
-				
-				var x=p_pos.cx*self.scale/parseFloat(svg.attr("width"))*s_width+s_left;//parseFloat(svg.attr("width"))*self.map.width();
-				var y=p_pos.cy*self.scale/parseFloat(svg.attr("width"))*s_height+s_top;//parseFloat(svg.attr("height"))*self.map.height();
-				console.log(x+","+y);
-				//self.scale=2;
-				self.x=-x;
-				self.y=-y;
-				/*
-				self.x=-((x)*self.scale/s_scale);
-				self.y=-((y)*self.scale/s_scale);
-				*/
-				moveTo(self.x, self.y, self.scale, 400);
-				console.log(self.x+","+self.y);
-				
-			}});
-			
+
+					console.log("��ʼ��ͼ���Ͻ����꣺" + self.x + "," + self.y);
+					var s_left = self.x;
+					var s_top = self.y;
+					console.log("ѡ��վ���SVG�ľ���λ��" + p_pos.cx + "," + p_pos.cy);
+					console.log("��ǰ��ͼ�Ĵ�С��" + self.map.width() + "," + self.map.height());
+					var s_width = self.map.width();
+					var s_height = self.map.height();
+					var s_scale = self.scale
+					console.log("SCALE:" + self.scale);
+					var m = svg.select('g');
+					var mp = m.getBBox();
+					console.log("��ͼ�ľ��Դ�С��" + parseFloat(svg.attr("width")) + "," + parseFloat(svg.attr("height")));
+
+					var x = p_pos.cx * self.scale / parseFloat(svg.attr("width")) * s_width + s_left;//parseFloat(svg.attr("width"))*self.map.width();
+					var y = p_pos.cy * self.scale / parseFloat(svg.attr("width")) * s_height + s_top;//parseFloat(svg.attr("height"))*self.map.height();
+					console.log(x + "," + y);
+					//self.scale=2;
+					self.x = -x;
+					self.y = -y;
+					/*
+					self.x=-((x)*self.scale/s_scale);
+					self.y=-((y)*self.scale/s_scale);
+					*/
+					moveTo(self.x, self.y, self.scale, 400);
+					console.log(self.x + "," + self.y);
+
+				}
+			});
+
 			return self;
 		}
 
@@ -292,13 +303,13 @@
 			this.drop = 0;
 			this.location = null;
 
-			this.init = function() {
+			this.init = function () {
 				var s = this;
 
 				// Construct
 				this.el = $('<div></div>').addClass('mapplic-tooltip');
 				this.close = $('<a></a>').addClass('mapplic-tooltip-close').attr('href', '#').appendTo(this.el);
-				this.close.on('click touchend', function(e) {
+				this.close.on('click touchend', function (e) {
 					e.preventDefault();
 					$('.mapplic-active', self.el).attr('class', 'mapplic-clickable');
 					if (self.deeplinking) self.deeplinking.clear();
@@ -316,7 +327,7 @@
 				self.map.append(this.el);
 			}
 
-			this.set = function(location) {
+			this.set = function (location) {
 				if (location) {
 					var s = this;
 
@@ -334,7 +345,7 @@
 				}
 			}
 
-			this.show = function(location) {
+			this.show = function (location) {
 				if (location) {
 					if (location.action == 'none') {
 						this.el.stop().fadeOut(300);
@@ -363,17 +374,17 @@
 					else this.shift = pinselect.height() + 10;
 
 					// Loading & positioning
-					$('img', this.el).load(function() {
+					$('img', this.el).load(function () {
 						s.position();
 					});
 					this.position();
-				
+
 					// Making it visible
 					this.el.stop().show();
 				}
 			}
 
-			this.position = function() {
+			this.position = function () {
 				if (this.location) {
 					var cx = self.map.offset().left + self.map.width() * this.location.x - self.container.offset().left,
 						cy = self.map.offset().top + self.map.height() * this.location.y - self.container.offset().top;
@@ -394,10 +405,10 @@
 						else this.el.removeClass('mapplic-bottom');
 
 						// Left-right check
-						if (this.el.outerWidth()/2 > cx)
-							verticalPos = 0.5 - (this.el.outerWidth()/2 - cx)/this.el.outerWidth();
-						else if ((self.container.width() - cx - this.el.outerWidth()/2) < 0)
-							verticalPos = 0.5 + (cx + this.el.outerWidth()/2 - self.container.width())/this.el.outerWidth(); 
+						if (this.el.outerWidth() / 2 > cx)
+							verticalPos = 0.5 - (this.el.outerWidth() / 2 - cx) / this.el.outerWidth();
+						else if ((self.container.width() - cx - this.el.outerWidth() / 2) < 0)
+							verticalPos = 0.5 + (cx + this.el.outerWidth() / 2 - self.container.width()) / this.el.outerWidth();
 
 						verticalPos = Math.max(0, Math.min(1, verticalPos));
 						ml = -this.el.outerWidth() * verticalPos;
@@ -414,12 +425,12 @@
 				}
 			}
 
-			this.hide = function() {
+			this.hide = function () {
 				var s = this;
 
 				this.location = null;
-				
-				this.el.stop().fadeOut(300, function() {
+
+				this.el.stop().fadeOut(300, function () {
 					s.desc.empty();
 				});
 			}
@@ -430,7 +441,7 @@
 			this.el = null;
 			this.shift = 6;
 
-			this.init = function() {
+			this.init = function () {
 				var s = this;
 
 				// Construct
@@ -440,7 +451,7 @@
 
 				// Events 
 				// pins + old svg
-				$(self.map).on('mouseover', '.mapplic-layer a', function() {
+				$(self.map).on('mouseover', '.mapplic-layer a', function () {
 					var id = '';
 					if ($(this).hasClass('mapplic-pin')) {
 						id = $(this).data('location');
@@ -453,17 +464,17 @@
 
 					var location = getLocationData(id);
 					if (location) s.show(location);
-				}).on('mouseout', function() {
+				}).on('mouseout', function () {
 					s.hide();
 				});
 
 				// new svg
 				if (self.o.selector) {
-					$(self.map).on('mouseover', self.o.selector, function() {
+					$(self.map).on('mouseover', self.o.selector, function () {
 						var location = getLocationData($(this).attr('id'));
 						s.shift = 20;
 						if (location) s.show(location);
-					}).on('mouseout', function() {
+					}).on('mouseout', function () {
 						s.hide();
 					});
 				}
@@ -471,7 +482,7 @@
 				self.map.append(this.el);
 			}
 
-			this.show = function(location) {
+			this.show = function (location) {
 				if (self.tooltip.location != location) {
 					this.title.text(location.title);
 
@@ -481,7 +492,7 @@
 				}
 			}
 
-			this.position = function(location) {
+			this.position = function (location) {
 				var cx = self.map.offset().left + self.map.width() * location.x - self.container.offset().left,
 					cy = self.map.offset().top + self.map.height() * location.y - self.container.offset().top;
 
@@ -500,10 +511,10 @@
 				else this.el.removeClass('mapplic-bottom');
 
 				// Left-right check
-				if (this.el.outerWidth()/2 > cx)
-					verticalPos = 0.5 - (this.el.outerWidth()/2 - cx)/this.el.outerWidth();
-				else if ((self.container.width() - cx - this.el.outerWidth()/2) < 0)
-					verticalPos = 0.5 + (cx + this.el.outerWidth()/2 - self.container.width())/this.el.outerWidth(); 
+				if (this.el.outerWidth() / 2 > cx)
+					verticalPos = 0.5 - (this.el.outerWidth() / 2 - cx) / this.el.outerWidth();
+				else if ((self.container.width() - cx - this.el.outerWidth() / 2) < 0)
+					verticalPos = 0.5 + (cx + this.el.outerWidth() / 2 - self.container.width()) / this.el.outerWidth();
 
 				ml = -this.el.outerWidth() * verticalPos;
 				this.triangle.css('left', Math.max(10, Math.min(90, verticalPos * 100)) + '%');
@@ -515,7 +526,7 @@
 				});
 			}
 
-			this.hide = function() {
+			this.hide = function () {
 				this.el.stop().fadeOut(200);
 			}
 		}
@@ -524,11 +535,11 @@
 		function Deeplinking() {
 			this.param = 'location';
 
-			this.init = function() {
+			this.init = function () {
 				var s = this;
 				this.check(0);
 
-				window.onpopstate = function(e) {
+				window.onpopstate = function (e) {
 					if (e.state) {
 						s.check(600);
 					}
@@ -536,25 +547,25 @@
 				}
 			}
 
-			this.check = function(ease) {
+			this.check = function (ease) {
 				var id = this.getUrlParam(this.param);
 				showLocation(id, ease, true);
 			}
 
-			this.getUrlParam = function(name) {
+			this.getUrlParam = function (name) {
 				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 					results = regex.exec(location.search);
 				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 			}
 
-			this.update = function(id) {
+			this.update = function (id) {
 				var url = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + this.param + '=' + id;
-				window.history.pushState({path: url}, '', url);
+				window.history.pushState({ path: url }, '', url);
 			}
 
 			// Clear
-			this.clear = function() {
+			this.clear = function () {
 				history.pushState('', document.title, window.location.pathname);
 			}
 		}
@@ -563,25 +574,25 @@
 		function DeeplinkingHash() {
 			this.param = 'location';
 
-			this.init = function() {
+			this.init = function () {
 				var s = this;
 				this.check(0);
 
-				$(window).on('hashchange', function() {
+				$(window).on('hashchange', function () {
 					s.check(600);
 				});
 			}
 
-			this.check = function(ease) {
+			this.check = function (ease) {
 				var id = location.hash.slice(this.param.length + 2);
 				showLocation(id, ease, true);
 			}
 
-			this.update = function(id) {
+			this.update = function (id) {
 				window.location.hash = this.param + '-' + id;
 			}
 
-			this.clear = function() {
+			this.clear = function () {
 				window.location.hash = this.param;
 			}
 		}
@@ -591,10 +602,10 @@
 			this.el = null;
 			this.opacity = null;
 
-			this.init = function() {
+			this.init = function () {
 				this.el = $('<div></div>').addClass('mapplic-minimap').appendTo(self.container);
 				this.el.css('height', this.el.width() * self.hw_ratio);
-				this.el.click(function(e) {
+				this.el.click(function (e) {
 					e.preventDefault();
 
 					var x = (e.pageX - $(this).offset().left) / $(this).width(),
@@ -604,19 +615,19 @@
 				});
 			}
 
-			this.addLayer = function(data) {
+			this.addLayer = function (data) {
 				var layer = $('<div></div>').addClass('mapplic-minimap-layer').addClass(data.id).appendTo(this.el);
 				$('<img>').attr('src', data.minimap).addClass('mapplic-minimap-background').appendTo(layer);
 				$('<div></div>').addClass('mapplic-minimap-overlay').appendTo(layer);
 				$('<img>').attr('src', data.minimap).addClass('mapplic-minimap-active').appendTo(layer);
 			}
 
-			this.show = function(target) {
+			this.show = function (target) {
 				$('.mapplic-minimap-layer', this.el).hide();
 				$('.mapplic-minimap-layer.' + target, this.el).show();
 			}
 
-			this.update = function(x, y) {
+			this.update = function (x, y) {
 				var active = $('.mapplic-minimap-active', this.el);
 
 				if (x === undefined) x = self.x;
@@ -629,7 +640,7 @@
 					right = left + width,
 					bottom = top + height;
 
-				active.each(function() {
+				active.each(function () {
 					$(this)[0].style.clip = 'rect(' + top + 'px, ' + right + 'px, ' + bottom + 'px, ' + left + 'px)';
 				});
 
@@ -638,9 +649,9 @@
 				this.el.show();
 				this.el.css('opacity', 1.0);
 				clearTimeout(this.opacity);
-				this.opacity = setTimeout(function() {
+				this.opacity = setTimeout(function () {
 					s.el.css('opacity', 0);
-					setTimeout(function() { s.el.hide(); }, 600);
+					setTimeout(function () { s.el.hide(); }, 600);
 				}, 2000);
 			}
 		}
@@ -650,20 +661,20 @@
 			this.el = null;
 			this.list = null;
 
-			this.init = function() {
+			this.init = function () {
 				var s = this;
 
 				this.el = $('<div></div>').addClass('mapplic-sidebar').appendTo(self.el);
 
 				if (self.o.search) {
-					var form = $('<form></form>').addClass('mapplic-search-form').submit(function() {
+					var form = $('<form></form>').addClass('mapplic-search-form').submit(function () {
 						return false;
 					}).appendTo(this.el);
-					self.clear = $('<button></button>').addClass('mapplic-search-clear').click(function() {
+					self.clear = $('<button></button>').addClass('mapplic-search-clear').click(function () {
 						input.val('');
 						input.keyup();
 					}).appendTo(form);
-					var input = $('<input>').attr({'type': 'text', 'spellcheck': 'false', 'placeholder': 'Search...'}).addClass('mapplic-search-input').keyup(function() {
+					var input = $('<input>').attr({ 'type': 'text', 'spellcheck': 'false', 'placeholder': 'Search...' }).addClass('mapplic-search-input').keyup(function () {
 						var keyword = $(this).val();
 						s.search(keyword);
 					}).prependTo(form);
@@ -676,17 +687,17 @@
 				if (!self.o.search) listContainer.css('padding-top', '0');
 			}
 
-			this.addCategories = function(categories) {
+			this.addCategories = function (categories) {
 				var list = this.list;
 
 				if (categories) {
-					$.each(categories, function(index, category) {
+					$.each(categories, function (index, category) {
 						var item = $('<li></li>').addClass('mapplic-list-category').attr('data-category', category.id);
 						var ol = $('<ol></ol>').css('border-color', category.color).appendTo(item);
 						if (category.show == 'false') ol.hide();
 						else item.addClass('mapplic-opened');
 						var link = $('<a></a>').attr('href', '#').attr('title', category.title).css('background-color', category.color).text(category.title).prependTo(item);
-						link.on('click', function(e) {
+						link.on('click', function (e) {
 							e.preventDefault();
 							item.toggleClass('mapplic-opened');
 							ol.slideToggle(200);
@@ -695,12 +706,12 @@
 						$('<span></span>').text('0').addClass('mapplic-list-count').prependTo(link);
 						list.append(item);
 					});
-					}
+				}
 			}
 
-			this.addLocation = function(data) {
+			this.addLocation = function (data) {
 				var item = $('<li></li>').addClass('mapplic-list-location').addClass('mapplic-list-shown');
-				var link = $('<a></a>').attr('href', '#').click(function(e) {
+				var link = $('<a></a>').attr('href', '#').click(function (e) {
 					e.preventDefault();
 					showLocation(data.id, 600);
 
@@ -724,11 +735,11 @@
 				$('.mapplic-list-count', category).text($('.mapplic-list-shown', category).length);
 			}
 
-			this.search = function(keyword) {
+			this.search = function (keyword) {
 				if (keyword) self.clear.fadeIn(100);
 				else self.clear.fadeOut(100);
 
-				$('.mapplic-list li', self.el).each(function() {
+				$('.mapplic-list li', self.el).each(function () {
 					if ($(this).text().search(new RegExp(keyword, "i")) < 0) {
 						$(this).removeClass('mapplic-list-shown');
 						$(this).slideUp(200);
@@ -738,7 +749,7 @@
 					}
 				});
 
-				$('.mapplic-list > li', self.el).each(function() {
+				$('.mapplic-list > li', self.el).each(function () {
 					var count = $('.mapplic-list-shown', this).length;
 					$('.mapplic-list-count', this).text(count);
 				});
@@ -753,14 +764,14 @@
 		function DevTools() {
 			this.el = null;
 
-			this.init = function() {
+			this.init = function () {
 				this.el = $('<div></div>').addClass('mapplic-coordinates').appendTo(self.container);
 				this.el.append('x: ');
 				$('<code></code>').addClass('mapplic-coordinates-x').appendTo(this.el);
 				this.el.append(' y: ');
 				$('<code></code>').addClass('mapplic-coordinates-y').appendTo(this.el);
 
-				$('.mapplic-layer', self.map).on('mousemove', function(e) {
+				$('.mapplic-layer', self.map).on('mousemove', function (e) {
 					var x = (e.pageX - self.map.offset().left) / self.map.width(),
 						y = (e.pageY - self.map.offset().top) / self.map.height();
 					$('.mapplic-coordinates-x').text(parseFloat(x).toFixed(4));
@@ -772,11 +783,11 @@
 		// Clear Button
 		function ClearButton() {
 			this.el = null;
-			
-			this.init = function() {
+
+			this.init = function () {
 				this.el = $('<a></a>').attr('href', '#').addClass('mapplic-clear-button').appendTo(self.container);
 
-				this.el.on('click touchstart', function(e) {
+				this.el.on('click touchstart', function (e) {
 					e.preventDefault();
 					if (self.deeplinking) self.deeplinking.clear();
 					$('.mapplic-active', self.el).attr('class', 'mapplic-clickable');
@@ -789,46 +800,46 @@
 		// Zoom Buttons
 		function ZoomButtons() {
 			this.el = null;
-		
-			this.init = function() {
+
+			this.init = function () {
 				this.el = $('<div></div>').addClass('mapplic-zoom-buttons').appendTo(self.container);
 
 				this.zoomin = $('<a></ha>').attr('href', '#').addClass('mapplic-zoomin-button').appendTo(this.el);
 
-				this.zoomin.on('click touchstart', function(e) {
+				this.zoomin.on('click touchstart', function (e) {
 					e.preventDefault();
 
 					var scale = self.scale;
 					self.scale = normalizeScale(scale + scale * 0.8);
 
-					self.x = normalizeX(self.x - (self.container.width()/2 - self.x) * (self.scale/scale - 1));
-					self.y = normalizeY(self.y - (self.container.height()/2 - self.y) * (self.scale/scale - 1));
+					self.x = normalizeX(self.x - (self.container.width() / 2 - self.x) * (self.scale / scale - 1));
+					self.y = normalizeY(self.y - (self.container.height() / 2 - self.y) * (self.scale / scale - 1));
 
 					moveTo(self.x, self.y, self.scale, 400, 'easeInOutCubic');
-					
+
 					//triger mapZoomIn event
-					self.el.trigger("mapOnZoom",{"map":e.target,"scale":self.scale}); 
+					self.el.trigger("mapOnZoom", { "map": e.target, "scale": self.scale });
 				});
 
 				this.zoomout = $('<a></ha>').attr('href', '#').addClass('mapplic-zoomout-button').appendTo(this.el);
 
-				this.zoomout.on('click touchstart', function(e) {
+				this.zoomout.on('click touchstart', function (e) {
 					e.preventDefault();
 
 					var scale = self.scale;
 					self.scale = normalizeScale(scale - scale * 0.4);
 
-					self.x = normalizeX(self.x - (self.container.width()/2 - self.x) * (self.scale/scale - 1));
-					self.y = normalizeY(self.y - (self.container.height()/2 - self.y) * (self.scale/scale - 1));
+					self.x = normalizeX(self.x - (self.container.width() / 2 - self.x) * (self.scale / scale - 1));
+					self.y = normalizeY(self.y - (self.container.height() / 2 - self.y) * (self.scale / scale - 1));
 
 					moveTo(self.x, self.y, self.scale, 400, 'easeInOutCubic');
-					
+
 					//triger mapZoomOut event
-					self.el.trigger("mapOnZoom",{"map":e.target,"scale":self.scale});
+					self.el.trigger("mapOnZoom", { "map": e.target, "scale": self.scale });
 				});
 			}
 
-			this.update = function(scale) {
+			this.update = function (scale) {
 				this.zoomin.removeClass('mapplic-disabled');
 				this.zoomout.removeClass('mapplic-disabled');
 				if (scale == self.fitscale) this.zoomout.addClass('mapplic-disabled');
@@ -840,11 +851,11 @@
 		function FullScreen() {
 			this.el = null;
 
-			this.init = function() {
+			this.init = function () {
 				var s = this;
 				this.element = self.el[0];
 
-				$('<a></a>').attr('href', '#').attr('href', '#').addClass('mapplic-fullscreen-button').click(function(e) {
+				$('<a></a>').attr('href', '#').attr('href', '#').addClass('mapplic-fullscreen-button').click(function (e) {
 					e.preventDefault();
 
 					if (s.isFull()) s.exitFull();
@@ -853,27 +864,27 @@
 				}).appendTo(self.container);
 			}
 
-			this.goFull = function() {
+			this.goFull = function () {
 				if (this.element.requestFullscreen) this.element.requestFullscreen();
-				else if(this.element.mozRequestFullScreen) this.element.mozRequestFullScreen();
-				else if(this.element.webkitRequestFullscreen) this.element.webkitRequestFullscreen();
+				else if (this.element.mozRequestFullScreen) this.element.mozRequestFullScreen();
+				else if (this.element.webkitRequestFullscreen) this.element.webkitRequestFullscreen();
 				else if (this.element.msRequestFullscreen) {
-				    $('.mapplic-element').css("height", "100%");
-                     this.element.msRequestFullscreen();
-			    }
+					$('.mapplic-element').css("height", "100%");
+					this.element.msRequestFullscreen();
+				}
 			}
 
-			this.exitFull = function() {
+			this.exitFull = function () {
 				if (document.exitFullscreen) document.exitFullscreen();
-				else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
+				else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
 				else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
 				else if (document.msExitFullscreen) {
-				    $('.mapplic-element').css("height", self.o.height);
-				    document.msExitFullscreen();
-                }
+					$('.mapplic-element').css("height", self.o.height);
+					document.msExitFullscreen();
+				}
 			}
 
-			this.isFull = function() {
+			this.isFull = function () {
 				if (window.innerHeight == screen.height) {
 					return true;
 				} else {
@@ -883,7 +894,8 @@
 		}
 
 		// Functions
-		var processData = function(data) {
+		var processData = function (data) {
+
 			self.data = data;
 			var nrlevels = 0;
 			var shownLevel;
@@ -899,10 +911,10 @@
 			self.contentWidth = parseInt(data.mapwidth);
 			self.contentHeight = parseInt(data.mapheight);
 
-			self.hw_ratio = data.mapheight / data.mapwidth;
+			self.hw_ratio = data.mapheight / data.mapwidth; // 高宽比
 
 			//alert(data.mapheight);
-			
+
 			self.map.css({
 				'width': data.mapwidth,
 				'height': data.mapheight
@@ -923,12 +935,16 @@
 
 			// Iterate through levels
 			if (data.levels) {
-				$.each(data.levels, function(index, value) {
-					var source = value.map;
-					var extension = source.substr((source.lastIndexOf('.') + 1)).toLowerCase();
+				$.each(data.levels, function (index, value) {
+					// source 直接替换为本地文件svg
+					// var source = value.map;  // http://marketing.cyberspaceit.cn/interface/metromap/maps/linesh.svg
+					var source = './assets/linesh.svg'
+					var extension = source.substr((source.lastIndexOf('.') + 1)).toLowerCase(); // svg
 
 					// Create new map layer
 					var layer = $('<div></div>').addClass('mapplic-layer').addClass(value.id).hide().appendTo(self.map);
+
+					//  svg
 					switch (extension) {
 
 						// Image formats
@@ -938,13 +954,39 @@
 
 						// Vector format
 						case 'svg':
-							$('<div></div>').addClass('mapplic-map-image').load(source, function() {
+							$('<div></div>').addClass('mapplic-map-image').load(source, function () {
 								// setting up the location on the map
-								$(self.o.selector, this).each(function() {
-									var location = getLocationData($(this).attr('id')); 
+								$(self.o.selector, this).each(function () {
+									// g > [id^=\'ST\']
+									/**
+									 *  {
+											"id": "ST11-XZ",
+											"title": "莘庄",
+											"description": "莘庄",
+											"pin": "hidden",
+											"fill": null,
+											"x": "0.2972",
+											"y": "0.6264",
+											"zoom": "12",
+											"distance": null
+										},
+
+										 根据html中svg中
+										 匹配到json文件中，找到站点数据
+										  <g> 
+										  	<circle id=> </circle>
+										  <g/> 
+									 */
+									
+									//
+									var location = getLocationData($(this).attr('id'));
 									if (location) {
-										$(this).attr('class', 'mapplic-clickable');
+										$(this).attr('class', 'mapplic-clickable'); // 站点标记，圆形 椭圆形(中转站) 
+
 										location.onmap = $(this);
+
+										// console.log('location', location)
+										
 
 										if (location.fill) {
 											$(this).css('fill', location.fill);
@@ -952,39 +994,43 @@
 										}
 
 										// Landmark mode
-										if (self.o.landmark === location.id) $(this).attr('class', 'mapplic-active'); 
+										if (self.o.landmark === location.id) $(this).attr('class', 'mapplic-active');
 									}
 								});
 
-								// click event
-								$(self.o.selector).on('click mouseup touchend', function() {
+								// click event 站点的点击事件
+								$(self.o.selector).on('click mouseup touchend', function () {
 									//if (!self.dragging) 
 									{
-										var id = $(this).attr('id');
+										var id = $(this).attr('id'); // 后去id ST140-ZJBL, 对应json文件唯一值
+
+
 										showLocation(id, 600);
-										
+
 										//trigger mapOnClick event
-										console.log(self.el.attr('id'));
-										self.el.trigger("mapOnClick",{"pin":this}); 
+										// console.log(self.el); 
+
+										// el 是jq对象, 对应svg容器div,  触发自定义事件 
+										self.el.trigger("mapOnClick", { "pin": this });
 										
-										
+
 									}
 								});
 
 								// Support for the old map format
-								$('svg a', this).each(function() {
-									var location = getLocationData($(this).attr('xlink:href').substr(1)); 
+								$('svg a', this).each(function () {
+									var location = getLocationData($(this).attr('xlink:href').substr(1));
 									if (location) {
 										$(this).attr('class', 'mapplic-clickable');
 										location.onmap = $(this);
 									}
 								});
 
-								$('svg a', this).click(function(e) {
+								$('svg a', this).click(function (e) {
 									var id = $(this).attr('xlink:href').substr(1);
 									showLocation(id, 600);
 									e.preventDefault();
-									self.el.trigger("mapOnClick",{"pin":this}); 
+									self.el.trigger("mapOnClick", { "pin": this });
 								});
 							}).appendTo(layer);
 							break;
@@ -994,7 +1040,7 @@
 							alert('File type ' + extension + ' is not supported!');
 					}
 
-					// Create new minimap layer
+					// Create new minimap layer 
 					if (self.minimap) self.minimap.addLayer(value);
 
 					// Build layer control
@@ -1003,19 +1049,20 @@
 					if (!shownLevel || value.show) {
 						shownLevel = value.id;
 					}
-					
+
 					// Iterate through locations
-					$.each(value.locations, function(index, value) {
+					$.each(value.locations, function (index, value) {
 						var top = value.y * 100;
 						var left = value.x * 100;
 
 						if (value.pin != 'hidden') {
+							// console.log('value', value)
 							if (self.o.markers) {
 								var target = '#';
 								if (value.action == 'redirect') target = value.link;
 
-								var pin = $('<a></a>').attr('href', target).addClass('mapplic-pin').css({'top': top + '%', 'left': left + '%'}).appendTo(layer);
-								pin.on('click touchend', function(e) {
+								var pin = $('<a></a>').attr('href', target).addClass('mapplic-pin').css({ 'top': top + '%', 'left': left + '%' }).appendTo(layer);
+								pin.on('click touchend', function (e) {
 									e.preventDefault();
 									showLocation(value.id, 600);
 								});
@@ -1043,7 +1090,7 @@
 				self.hovertip = new HoverTooltip();
 				self.hovertip.init();
 			}
-			
+
 			// Developer tools
 			if (self.o.developer) self.devtools = new DevTools().init();
 
@@ -1067,18 +1114,18 @@
 				self.levelselect.appendTo(self.levels);
 				var down = $('<a href="#"></a>').addClass('mapplic-levels-down').appendTo(self.levels);
 				self.container.append(self.levels);
-			
-				self.levelselect.change(function() {
+
+				self.levelselect.change(function () {
 					var value = $(this).val();
 					switchLevel(value);
 				});
-			
-				up.click(function(e) {
+
+				up.click(function (e) {
 					e.preventDefault();
 					if (!$(this).hasClass('mapplic-disabled')) switchLevel('+');
 				});
 
-				down.click(function(e) {
+				down.click(function (e) {
 					e.preventDefault();
 					if (!$(this).hasClass('mapplic-disabled')) switchLevel('-');
 				});
@@ -1086,14 +1133,14 @@
 			switchLevel(shownLevel);
 
 			// Browser resize
-			$(window).resize(function() {				
+			$(window).resize(function () {
 				// Mobile
 				if ($(window).width() < 668) {
 					//alert(self.o.height);
 					//�޶��߶�
-					self.container.height(self.o.height+66);
+					self.container.height(self.o.height + 66);
 					//self.container.height($(window).height() - 66);
-					
+
 				}
 				else self.container.height('100%');
 
@@ -1136,19 +1183,19 @@
 
 			// Controls
 			if (self.o.zoom) addControls();
-			
+
 			//
-			
+
 		}
 
-		var addControls = function() {
+		var addControls = function () {
 			var map = self.map,
 				mapbody = $('.mapplic-map-image', self.map);
 
-			document.ondragstart = function() { return false; } // IE drag fix
+			document.ondragstart = function () { return false; } // IE drag fix
 
 			// Drag & drop
-			mapbody.on('mousedown', function(event) {
+			mapbody.on('mousedown', function (event) {
 				self.dragging = false;
 				map.stop();
 
@@ -1159,11 +1206,11 @@
 
 				map.addClass('mapplic-dragging');
 
-				self.map.on('mousemove', function(event) {
+				self.map.on('mousemove', function (event) {
 					self.dragging = true;
 
 					var x = event.pageX - map.data('mouseX') + self.x;
-						y = event.pageY - map.data('mouseY') + self.y;
+					y = event.pageY - map.data('mouseY') + self.y;
 
 					x = normalizeX(x);
 					y = normalizeY(y);
@@ -1172,8 +1219,8 @@
 					map.data('lastX', x);
 					map.data('lastY', y);
 				});
-			
-				$(document).on('mouseup', function(event) {
+
+				$(document).on('mouseup', function (event) {
 					self.x = map.data('lastX');
 					self.y = map.data('lastY');
 
@@ -1185,36 +1232,36 @@
 			});
 
 			// Double click
-			$(document).on('dblclick', '.mapplic-map-image', function(event) {
+			$(document).on('dblclick', '.mapplic-map-image', function (event) {
 				event.preventDefault();
 
 				var scale = self.scale;
 				self.scale = normalizeScale(scale * 2);
 
-				self.x = normalizeX(self.x - (event.pageX - self.container.offset().left - self.x) * (self.scale/scale - 1));
-				self.y = normalizeY(self.y - (event.pageY - self.container.offset().top - self.y) * (self.scale/scale - 1));
+				self.x = normalizeX(self.x - (event.pageX - self.container.offset().left - self.x) * (self.scale / scale - 1));
+				self.y = normalizeY(self.y - (event.pageY - self.container.offset().top - self.y) * (self.scale / scale - 1));
 
 				moveTo(self.x, self.y, self.scale, 400, 'easeInOutCubic');
 			});
 
 			// Mousewheel
-			$('.mapplic-layer', self.el).bind('mousewheel DOMMouseScroll', function(event, delta) {
+			$('.mapplic-layer', self.el).bind('mousewheel DOMMouseScroll', function (event, delta) {
 				event.preventDefault();
 
 				var scale = self.scale;
-				self.scale = normalizeScale(scale + scale * delta/5);
+				self.scale = normalizeScale(scale + scale * delta / 5);
 
-				self.x = normalizeX(self.x - (event.pageX - self.container.offset().left - self.x) * (self.scale/scale - 1));
-				self.y = normalizeY(self.y - (event.pageY - self.container.offset().top - self.y) * (self.scale/scale - 1));
+				self.x = normalizeX(self.x - (event.pageX - self.container.offset().left - self.x) * (self.scale / scale - 1));
+				self.y = normalizeY(self.y - (event.pageY - self.container.offset().top - self.y) * (self.scale / scale - 1));
 
 				moveTo(self.x, self.y, self.scale, 200, 'easeOutCubic');
-				
-				self.el.trigger("mapOnZoom",{"scale":self.scale});
+
+				self.el.trigger("mapOnZoom", { "scale": self.scale });
 			});
 
 			// Touch support
 			if (!('ontouchstart' in window || 'onmsgesturechange' in window)) return true;
-			mapbody.on('touchstart', function(e) {
+			mapbody.on('touchstart', function (e) {
 				self.dragging = false;
 
 				var orig = e.originalEvent,
@@ -1223,7 +1270,7 @@
 				map.data('touchY', orig.changedTouches[0].pageY - pos.top);
 				map.data('touchX', orig.changedTouches[0].pageX - pos.left);
 
-				mapbody.on('touchmove', function(e) {
+				mapbody.on('touchmove', function (e) {
 					e.preventDefault();
 					self.dragging = true;
 
@@ -1241,11 +1288,11 @@
 					}
 				});
 
-				mapbody.on('touchend', function(e) {
+				mapbody.on('touchend', function (e) {
 					mapbody.off('touchmove touchend');
 				});
 			});
-			
+
 			// Pinch zoom
 			var hammer = new Hammer(self.map[0], {
 				transform_always_block: true,
@@ -1254,39 +1301,39 @@
 			});
 
 			/* hammer fix */
-			self.map.on('touchstart', function(e) {
+			self.map.on('touchstart', function (e) {
 				if (e.originalEvent.touches.length > 1) hammer.get('pinch').set({ enable: true });
 			});
 
-			self.map.on('touchend', function(e) {
+			self.map.on('touchend', function (e) {
 				hammer.get('pinch').set({ enable: false });
 			});
 			/* hammer fix ends */
 
-			var scale=1, last_scale;
-			hammer.on('pinchstart', function(e) {
+			var scale = 1, last_scale;
+			hammer.on('pinchstart', function (e) {
 				self.dragging = false;
 
 				scale = self.scale / self.fitscale;
 				last_scale = scale;
 			});
 
-			hammer.on('pinch', function(e) {
+			hammer.on('pinch', function (e) {
 				self.dragging = true;
 
 				if (e.scale != 1) scale = Math.max(1, Math.min(last_scale * e.scale, 100));
-				
+
 				var oldscale = self.scale;
 				self.scale = normalizeScale(scale * self.fitscale);
 
-				self.x = normalizeX(self.x - (e.center.x - self.container.offset().left - self.x) * (self.scale/oldscale - 1));
-				self.y = normalizeY(self.y - (e.center.y - self.y) * (self.scale/oldscale - 1)); // - self.container.offset().top
+				self.x = normalizeX(self.x - (e.center.x - self.container.offset().left - self.x) * (self.scale / oldscale - 1));
+				self.y = normalizeY(self.y - (e.center.y - self.y) * (self.scale / oldscale - 1)); // - self.container.offset().top
 
 				moveTo(self.x, self.y, self.scale, 100);
 			});
 		}
 
-		var switchLevel = function(target, tooltip) {
+		var switchLevel = function (target, tooltip) {
 			switch (target) {
 				case '+':
 					target = $('option:selected', self.levelselect).removeAttr('selected').prev().prop('selected', 'selected').val();
@@ -1328,10 +1375,10 @@
 			}
 		}
 
-		var getLocationData = function(id) {
+		var getLocationData = function (id) {
 			var data = null;
-			$.each(self.data.levels, function(index, layer) {
-				$.each(layer.locations, function(index, value) {
+			$.each(self.data.levels, function (index, layer) {
+				$.each(layer.locations, function (index, value) {
 					if (value.id == id) {
 						data = value;
 					}
@@ -1340,14 +1387,14 @@
 			return data;
 		}
 
-		var showLocation = function(id, duration, check) {
-			$.each(self.data.levels, function(index, layer) {
+		var showLocation = function (id, duration, check) {
+			$.each(self.data.levels, function (index, layer) {
 				if (layer.id == id) {
 					switchLevel(layer.id, false);
 
 					return false;
 				}
-				$.each(layer.locations, function(index, location) {
+				$.each(layer.locations, function (index, location) {
 					if (location.id == id) {
 						var ry = 0.5;
 
@@ -1373,31 +1420,31 @@
 			});
 		};
 
-		var normalizeX = function(x) {
+		var normalizeX = function (x) {
 			var minX = self.container.width() - self.contentWidth * self.scale;
 
 			if (minX < 0) {
 				if (x > 0) x = 0;
 				else if (x < minX) x = minX;
 			}
-			else x = minX/2;
+			else x = minX / 2;
 
 			return x;
 		}
 
-		var normalizeY = function(y) {
+		var normalizeY = function (y) {
 			var minY = self.container.height() - self.contentHeight * self.scale;
 
 			if (minY < 0) {
 				if (y >= 0) y = 0;
 				else if (y < minY) y = minY;
 			}
-			else y = minY/2;
+			else y = minY / 2;
 
 			return y;
 		}
 
-		var normalizeScale = function(scale) {
+		var normalizeScale = function (scale) {
 			if (scale < self.fitscale) scale = self.fitscale;
 			else if (scale > self.o.maxscale) scale = self.o.maxscale;
 
@@ -1406,7 +1453,7 @@
 			return scale;
 		}
 
-		var zoomTo = function(x, y, s, duration, easing, ry) {
+		var zoomTo = function (x, y, s, duration, easing, ry) {
 			duration = typeof duration !== 'undefined' ? duration : 400;
 			ry = typeof ry !== 'undefined' ? ry : 0.5;
 
@@ -1418,14 +1465,14 @@
 			moveTo(self.x, self.y, self.scale, duration, easing);
 		}
 
-		var moveTo = function(x, y, scale, d, easing) {
+		var moveTo = function (x, y, scale, d, easing) {
 			if (scale !== undefined) {
 				self.map.stop().animate({
 					'left': x,
 					'top': y,
 					'width': self.contentWidth * scale,
 					'height': self.contentHeight * scale
-				}, d, easing, function() {
+				}, d, easing, function () {
 					if (self.tooltip) self.tooltip.position();
 				});
 			}
@@ -1441,20 +1488,20 @@
 	};
 
 	//  Create a jQuery plugin
-	$.fn.mapplic = function(params) {
+	$.fn.mapplic = function (params) {
 		var len = this.length;
-		
 
-		console.log('this',this)
-	
-		return this.each(function(index) {
+
+		// console.log('this', this)
+
+		return this.each(function (index) {
 			var me = $(this),
 				key = 'mapplic' + (len > 1 ? '-' + ++index : ''),
 				instance = (new Mapplic).init(me, params);
-				
+
 		});
-		
-		
+
+
 	};
 
 })(jQuery);
