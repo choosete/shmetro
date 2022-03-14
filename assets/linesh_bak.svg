@@ -6,8 +6,6 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="全网图"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)" sodipodi:docname="linesh.svg" x="0px" y="0px"
    viewBox="0 0 2743.7 3158" style="enable-background:new 0 0 2743.7 3158;" xml:space="preserve">
-
-
    <metadata id="metadata2429">
       <rdf:rdf>
          <cc:work rdf:about="">
@@ -23,8 +21,6 @@
          </cc:Work>
       </rdf:RDF>
    </metadata>
-
-   <!-- defs 定义一些可复用的图形 pattern是定义一些基本图形，可以用来填充平铺 -->
    <defs id="defs2427">
       <pattern inkscape:collect="always" xlink:href="#pattern9229" id="pattern9237"
          patternTransform="matrix(31.771613,0,0,10,-1878.5503,-117.69045)" />
@@ -53,9 +49,7 @@
       <pattern id="EMFhbasepattern" patternUnits="userSpaceOnUse" width="6" height="6" x="0" y="0" />
       <pattern id="EMFhbasepattern-0" patternUnits="userSpaceOnUse" width="6" height="6" x="0" y="0" />
    </defs>
-
-   <!-- svg 元素的内嵌的样式，类似html中的css -->
-   <style >
+   <style type="text/css" id="style2">
       .st0 {
          fill: #DDF1FC;
       }
@@ -787,8 +781,6 @@
          stroke-miterlimit: 10;
       }
    </style>
-
-   <!-- sodipodi 是svg制图的专业软件，这部分是软件特定标签信息 -->
    <sodipodi:namedview bordercolor="#666666" borderopacity="1" fit-margin-bottom="100" fit-margin-left="60"
       fit-margin-right="0" fit-margin-top="0" gridtolerance="10" guidetolerance="10" id="namedview5799"
       inkscape:bbox-nodes="false" inkscape:bbox-paths="false" inkscape:current-layer="line06" inkscape:cx="2205.2561"
@@ -828,9 +820,7 @@
       <sodipodi:guide position="1569.9491,272.30817" orientation="0,-1" id="guide3621" inkscape:locked="false" />
       <sodipodi:guide position="1573.9154,223.63037" orientation="0,-1" id="guide3623" inkscape:locked="false" />
    </sodipodi:namedview>
-
-   <!-- 黄浦江,方位表示标识符 -->
-   <!-- <g id="layer17" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="background"
+   <g id="layer17" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="background"
       style="display:inline" sodipodi:insensitive="true">
       <path id="rect11567" inkscape:connector-curvature="0" sodipodi:nodetypes="cccc" class="st0"
          d="m 1927.8,4.5 969.7,870.3 -1,-870.6 z" style="fill:#ddf1fc" />
@@ -843,7 +833,6 @@
          sodipodi:nodetypes="ccaacscccsccc" />
       <path id="path3982" inkscape:connector-curvature="0" class="st0"
          d="m 2207.4926,339.0032 c 0,0 44.4,-46.4 90.7,-2 l -46.4,-44.4 z" style="fill:#ddf1fc" />
-      
       <g id="g4690" transform="translate(363.3426,-5.35004)">
          <text id="text4692" transform="matrix(0.9659,0.2588,-0.2588,0.9659,2180.6235,238.8403)" class="st2 st3"
             style="font-size:34.2001px;line-height:100%;font-family:ArialMT">N</text>
@@ -859,13 +848,7 @@
       <path id="path12749" inkscape:connector-curvature="0" class="st0"
          d="m 2185.4926,232.5032 c 0,0 47.8,42.8 5,90.6 l 42.8,-47.8 z" style="fill:#ddf1fc" />
    </g>
-    -->
-   <!-- 
-
-      g 是分组概念，一组图形放到一起编组，方便查找和修改
-    -->
-   <!-- 右下角的线路图例说明和版权说明信息 -->
-   <!-- <g id="layer15" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="word"
+   <g id="layer15" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="word"
       style="display:inline">
       <g id="g7" transform="matrix(0.98178669,0,0,0.98178669,-881.43398,-253.23554)">
          <rect id="rect9" x="2516.1001" y="3201.8" class="st7" width="63.799999" height="24.700001"
@@ -1582,9 +1565,10 @@
       <rect id="rect517" x="2141.5" y="2822.8999" class="st7" width="8.3000002" height="23.299999"
          style="fill:#e3002b" />
 
-      <text id="text267" class="st34 st35"
+      <!-- marker -->
+      <!-- <text id="text267" class="st34 st35"
          style="font-size:25px;line-height:100%;font-family:AdobeSongStd-Light-GBpc-EUC-H"
-         transform="translate(1582.902,3108.1821)">未经许可，不得将本页信息转载、复制或变更格式后在其他网站及各类媒体等上公开发布。</text>
+         transform="translate(1582.902,3108.1821)">未经许可，不得将本页信息转载、复制或变更格式后在其他网站及各类媒体等上公开发布。</text> -->
 
 
       <text id="text269" transform="translate(2582.9019,3109.48)" class="st2 st35"
@@ -1666,16 +1650,17 @@
       <path id="path65-9" inkscape:connector-curvature="0" class="st8"
          d="m 2265.3743,2955.3572 v -8.4 l -6,8.4 z m 0,1.8 h -8.2 v -1.8 l 8.7,-12.5 h 1.6 v 12.5 h 2.6 v 1.8 h -2.6 v 4.1 h -2 z"
          style="display:inline;fill:#040000" />
-   </g> -->
+   </g>
 
-   <!-- 磁悬浮 -->
    <g id="layer22" inkscape:groupmode="layer" inkscape:label="cxf" class="st45" style="display:inline"
       transform="translate(-153.78124,-4.1412)" sodipodi:insensitive="true">
 
       <path id="path7754" inkscape:connector-curvature="0" sodipodi:nodetypes="cczzzzscsc" class="st47"
          d="m 2272.3964,1715.08 v 254.8 c -0.4,16.2 13,34.1 32.6,34.1 19.6,0 161.1,-2 184.5,-2 23.4,0 33.6,6.4 33.6,32.3 v 105.4311 c 0,7.6131 3.3756,14.019 8.5355,19.0665 5.6838,5.5599 10.6232,9.4123 16.5763,15.3655 10.9716,11.0609 20.9375,21.6606 20.9375,38.8606 v 122.8"
          style="display:inline;fill:none;stroke:#ed6e01;stroke-width:8;stroke-opacity:1" />
-         
+
+
+
       <path style="display:inline;fill:none;stroke:#0e7572;stroke-width:8;stroke-opacity:1"
          d="m 2280.3964,1715.08 v 258.8 c 0,10.1776 10.3538,22.586 22.6,22.586 12.2462,0 154.5579,-2 182.5,-2 27.9421,0 45.3837,4.7204 45.3837,42.0837 v 91.1614 c 0,10.4991 -2.3163,18.2395 8.7518,29.0665 5.6838,5.56 10.6232,9.4123 16.5763,15.3655 10.9716,11.0609 20.9375,19.8489 20.9375,42.8606 v 120.8"
          class="st47" sodipodi:nodetypes="cczzzzscsc" inkscape:connector-curvature="0" id="path2870" />
@@ -1693,10 +1678,17 @@
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10" /><text
          id="lbl0-2-PDGJJC-3" class="st37 st65" style="font-size:18px;line-height:100%;font-family:SimHei" x="2499.0676"
          y="2328.5444">磁浮线</text>
-   </g>
 
-   <!-- 金山铁路，磁悬浮转乘提示标签  -->
-   <!-- <g id="layer18" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="information"
+
+
+      <text id="lbl0-2-PDGJJC-3-2" class="st37 st65"
+         style="font-size:18px;line-height:100%;font-family:SimHei;display:inline" x="2336.6218"
+         y="1685.6638">磁浮线</text>
+
+
+
+   </g>
+   <g id="layer18" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="information"
       style="display:inline" sodipodi:insensitive="true">
       <g id="附贴信息" transform="translate(105.7778,-160.47942)">
          <path id="path534" inkscape:connector-curvature="0" sodipodi:nodetypes="cccssscccccc" class="st51"
@@ -1983,10 +1975,9 @@
 
 
       </g>
-   </g> -->
+   </g>
 
-   <!-- 机场，火车站图标 -->
-   <!-- <g id="layer19" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="icon"
+   <g id="layer19" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="icon"
       style="display:inline" sodipodi:insensitive="true">
       <g id="MaglevLine">
          <g id="g4072" transform="translate(118.87244,249.02707)">
@@ -2079,7 +2070,7 @@
                style="fill:#ffffff" />
          </g>
       </g>
-   </g> -->
+   </g>
 
    <g id="layer2" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line02"
       style="display:inline" sodipodi:insensitive="true">
@@ -2430,8 +2421,6 @@
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0247" sodipodi:nodetypes="sccssccss" transform="translate(186.70325,-411.00283)" />
    </g>
-
-
    <g id="layer11" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line03"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line03">
@@ -2751,8 +2740,6 @@
          style="display:inline;opacity:1;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0331" transform="translate(186.70325,-411.00283)" />
    </g>
-
-
    <g id="layer12" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line04"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line04">
@@ -3048,8 +3035,6 @@
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0416" sodipodi:nodetypes="sccssccss" transform="translate(186.70325,-411.00283)" />
    </g>
-
-
    <g id="layer13" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line05"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line05">
@@ -3273,8 +3258,6 @@
          </g>
       </g>
    </g>
-
-
    <g id="layer14" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line06"
       style="display:inline">
       <g id="line06">
@@ -3579,8 +3562,6 @@
          style="display:inline;opacity:1;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0634" transform="translate(186.70325,-411.00283)" />
    </g>
-
-
    <g id="layer5" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line07"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line07">
@@ -3942,8 +3923,6 @@
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0739" sodipodi:nodetypes="sccssccss" transform="translate(186.70325,-411.00283)" />
    </g>
-
-
    <g id="layer6" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line08"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line08">
@@ -4273,8 +4252,6 @@
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="station0843" />
    </g>
-
-
    <g id="line09" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line09"
       style="display:inline" sodipodi:insensitive="true">
       <path style="fill:none;stroke:#87caed;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
@@ -4639,8 +4616,6 @@
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0943" />
    </g>
-
-
    <g id="layer8" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line10"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line10">
@@ -5063,8 +5038,6 @@
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station1063" />
    </g>
-
-
    <g id="layer3" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line11"
       style="display:inline" sodipodi:insensitive="true">
       <path style="fill:none;stroke:#871c2b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
@@ -5524,8 +5497,6 @@
             style="opacity:1;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10" />
       </g>
    </g>
-
-
    <g inkscape:groupmode="layer" id="layer23" inkscape:label="line14" style="display:inline">
       <path
          style="display:inline;fill:none;stroke:#616020;stroke-width:9.61539;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -5958,8 +5929,6 @@
 
 
    </g>
-
-
    <g id="layer9" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line12"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line12" inkscape:label="#line12">
@@ -6312,8 +6281,6 @@
 
 
    </g>
-
-
    <g inkscape:groupmode="layer" id="layer20" inkscape:label="金山铁路" transform="translate(-186.70325,411.00283)"
       style="display:inline" sodipodi:insensitive="true">
       <path
@@ -6420,8 +6387,6 @@
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.451;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle3408" cx="537.33203" cy="2105.3364" r="9.0245638" />
    </g>
-
-
    <g inkscape:groupmode="layer" id="line18" inkscape:label="line18" style="display:inline;opacity:1">
       <path
          style="display:inline;opacity:1;fill:none;stroke:#c4984f;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -6812,8 +6777,6 @@
          d="m 1624.5427,613.1082 h -6.6667 m -6.6666,0 h -6.6667 m -6.6667,0 h -6.6666 m -6.6667,0 h -6.6667 m -6.6666,0 h -6.6667 m -6.6667,0 h -6.6666 m -6.6667,0 h -6.6667 m -6.6666,0 h -6.6667 m -6.6667,0 h -6.6666 m -6.6667,0 h -6.6667 m -6.6666,0 h -6.6667 m -6.6667,0 h -6.6666 m -6.6667,0 h -6.6667 m -6.6666,0 h -5 v -1.6667 m 0,-6.6667 v -6.6666 m 0,-6.6667 v -6.6667 m 0,-6.6666 v -6.6667 m 0,-6.6667 v -6.6666 m 0,-6.6667 v -6.6667 m 0,-6.6666 v -6.6667 m 0,-6.6667 v -6.6666 m 0,-6.6667 v -1 h 5.3333 m 6.6667,0 h 6.6666 m 6.6667,0 h 6.6667 m 6.6666,0 h 6.6667 m 6.6667,0 h 6.6666 m 6.6667,0 h 6.6667 m 6.6666,0 h 6.6667 m 6.6667,0 h 6.6666 m 6.6667,0 h 6.6667 m 6.6666,0 h 6.6667 m 6.6667,0 h 6.6666 m 6.6667,0 h 6.6667 m 6.6666,0 h 6.6667 m 6.6667,0 h 6.3333 v 0.3333 m 0,6.6667 v 6.6667 m 0,6.6666 v 6.6667 m 0,6.6667 v 6.6666 m 0,6.6667 v 6.6667 m 0,6.6666 v 6.6667 m 0,6.6667 v 6.6666 m 0,6.6667 v 6.6667 m 0,6.6666 v 2.3334"
          id="path6586" inkscape:connector-curvature="0" />
    </g>
-
-
    <g inkscape:groupmode="layer" id="layer7" inkscape:label="line15" style="display:inline" sodipodi:insensitive="true">
       <path
          style="fill:none;stroke:#b6a27a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7249,8 +7212,6 @@
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="station1542" sodipodi:nodetypes="sccssccss" transform="translate(-186.70325,411.00283)" />
    </g>
-
-
    <g id="layer10" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line16"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line16">
@@ -7389,8 +7350,6 @@
             style="fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10" />
       </g>
    </g>
-
-
    <g id="line17" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="line17"
       style="display:inline" sodipodi:insensitive="true">
       <path style="fill:none;stroke:#bc796f;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
@@ -7547,8 +7506,6 @@
          </g>
       </g>
    </g>
-
-
    <g id="layer4" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line13"
       style="display:inline" sodipodi:insensitive="true">
       <path id="path4619" inkscape:connector-curvature="0" class="st126" d="M 275,391.9"
@@ -7975,12 +7932,13 @@
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="station1828" />
    </g>
-
-
    <g id="layer1" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line01"
       style="display:inline" sodipodi:insensitive="true">
       <text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65" id="lbl0-1-FJL" x="1503.557"
          y="-115.4439">富锦路</text>
+
+
+
       <path style="fill:#e3002b;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1577.3,-132 v 70.9" class="st66" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01370138" />
@@ -8296,8 +8254,6 @@
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#station0122" sodipodi:nodetypes="sccssccss" />
    </g>
-
-
    <g id="layer21" transform="translate(-153.78124,-4.1412)" inkscape:groupmode="layer" inkscape:label="line41"
       style="display:inline" sodipodi:insensitive="true">
       <path style="fill:none;stroke:#b3b3b3;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
@@ -8381,8 +8337,6 @@
          style="fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round">
       </circle>
    </g>
-
-
    <g id="layer16" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="allstations"
       style="display:inline;opacity:1" sodipodi:insensitive="true">
       <g id="g4619" transform="translate(396.23336,-206.47701)">
