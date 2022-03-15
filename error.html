@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0, minimum-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/map.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="http://marketing.cyberspaceit.cn/interface/metromap/mapplic/mapplic.css">
+    <link rel="stylesheet" type="text/css" href="http://service.shmetro.com/skin/css/yunyingline.css">
+    </link>
+    <!-- <link href="http://service.shmetro.com/skin/css/rpresult.css" rel="stylesheet" type="text/css" /> -->
+
+
+    <head>
+
+    <body>
+
+        <!-- svg容器 -->
+        <div id="mapplic"></div>
+        <!-- <div id="accessNull"></div> -->
+
+        <!-- 线路图脚本部分 Scripts -->
+        <script type="text/javascript" src="./assets/jquery.min.js"></script>
+
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.easing.js"></script>
+
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.mousewheel.js"></script>
+
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script>
+
+        <script type="text/javascript" src="./assets/mapplic.js"></script>
+
+        <!-- <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script> -->
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                // 在页面内生成svg地铁图
+                $('#mapplic').mapplic({
+                    source: './assets/metromap.json', // 地铁站点位置信息
+                    selector: 'g > [id^=\'ST\']',
+                    // height: 1000, // svg 容器的高度
+                    height: '100vh',
+                    animate: false,
+                    sidebar: false, // 左侧边的搜索栏 - 站名搜索
+                    minimap: false,
+                    locations: true,
+                    deeplinking: true,
+                    fullscreen: true,
+                    hovertip: false,
+                    developer: false,
+                    zoom: true,
+                });
+
+                // 故障点
+                //  ST11-XZ   STD-SHHCZ  ST501-XJH
+
+                // $('[id=ST11-XZ]')
+                // $('#mapplic').on('mapOnClick', function (e, data) {
+                //     console.log('data', data)
+                // })
+
+                // 故障站点的id值
+                // console.log($('[id=STD-SHHCZ]'))
+
+                // <defs>
+                //     <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                //     <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:0" />
+                //     <stop offset="100%" style="stop-color:rgb(255, 0, 64);stop-opacity:1" />
+                //     </radialGradient>
+                // </defs>
+                // <circle cx="160" cy="160" r="20" fill="url(#grad1)">
+                //     <animate attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" />
+                // </circle>
+
+                // svgloaded
+
+                // svgdom的创建要使用createElementNS这个api，否则浏览器不认
+
+                const createSVGELE = (tag, attrs = {}) => {
+                    const ele = document.createElementNS('http://www.w3.org/2000/svg', tag)
+                    for (let key in attrs) {
+                        if (key === "style") {
+                            let styleObj = attrs['style']
+                            let val = "";
+                            Object.keys(styleObj).forEach(key => {
+                                val += key + ":" + styleObj[key] + ";"
+                            })
+                            ele.setAttribute('style', val)
+                        } else {
+                            ele.setAttribute(key, attrs[key])
+                        }
+
+                    }
+                    return ele
+                }
+
+                // svg加载完成后
+                $('#mapplic').on('loaded', function () {
+
+                    // 异常的站点
+                    const error = $('[id=ST10C-YSL]').get(0)
+
+                    if (error) {
+                        console.log(error)
+                        const SVGRect = error.getBBox()
+                        const cx = SVGRect.x + SVGRect.width / 2
+                        const cy = SVGRect.y + SVGRect.height / 2
+
+                        // const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+
+                        // circle.setAttribute('cx', cx)
+                        // circle.setAttribute('cy', cy)
+                        // circle.setAttribute('r', 50)
+                        // circle.setAttribute('style', "fill: #dda520")
+
+                        const g = createSVGELE('g', { id: 'err_ST1400-LDL' })
+                        const defs = createSVGELE('defs')
+                        g.appendChild(defs)
+                        const radialGradient = createSVGELE('radialGradient', {
+                            id: 'radialGradient_ST1400-LDL',
+                            cx: '50%',
+                            cy: '50%',
+                            r: '50%',
+                            fx: '50%',
+                            fy: '50%'
+                        })
+                        defs.appendChild(radialGradient)
+                        radialGradient.appendChild(createSVGELE('stop', {
+                            offset: '0%',
+                            style: {
+                                "stop-color": "rgb(255,255,255)",
+                                "stop-opacity": 0
+                            }
+                        }))
+                        radialGradient.appendChild(createSVGELE('stop', {
+                            offset: '100%',
+                            style: {
+                                "stop-color": "rgb(255, 0, 64)",
+                                "stop-opacity": 1
+                            }
+                        }))
+
+                        const circle = createSVGELE('circle', {
+                            cx,
+                            cy,
+                            r: 30,
+                            style: {
+                                fill: 'url(#radialGradient_ST1400-LDL)'
+                            }
+                        })
+
+                        circle.appendChild(createSVGELE('animate', {
+                            // attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" 
+                            attributeName: 'r',
+                            values: '30; 60; 30',
+                            begin: "0s",
+                            dur: '3s',
+                            repeatCount: 'indefinite'
+                        }))
+
+                        g.appendChild(circle)
+
+                        // 找到这个元素父元素添加进去，如果父元素有transform属性，也可以保证中心点和异常站点的中心一致，保证位置正确
+                        error.parentNode.appendChild(g)
+                    }
+
+                })
+
+            })
+
+
+        </script>
+    </body>
+
+</html>

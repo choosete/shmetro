@@ -40,9 +40,9 @@
 
 			self.x = 0;
 			self.y = 0;
-			self.scale = 3.5; // self 是Mapplic的 实例对象
+			self.scale = 1.2; // self 是Mapplic的 实例对象 
 
-			
+
 
 			self.el = el.addClass('mapplic-element mapplic-loading').addClass(self.o.skin).height(self.o.height);
 
@@ -193,7 +193,7 @@
 				}
 			});
 
-			//set line Color,������·��ɫ
+			//set line Color
 			$.fn.extend({
 				lineColor: function (line) {
 
@@ -212,7 +212,7 @@
 				}
 			});
 
-			//set line focus,�۽�һ����·
+			//set line focus
 			$.fn.extend({
 				lineFocus: function (line, num) {
 
@@ -235,7 +235,7 @@
 				}
 			});
 
-			//���ŵ�ָ��վ��
+			//
 			$.fn.extend({
 				focusTo: function (stat_id, scale) {
 					//self.scale=2;
@@ -355,7 +355,9 @@
 					var s = this;
 
 					this.location = location;
-					self.hovertip.hide();
+					if (self.hovertip) {
+						self.hovertip.hide();
+					}
 
 					if (location.image) this.image.attr('src', location.image).show();
 					else this.image.hide();
@@ -935,6 +937,7 @@
 
 			// Iterate through levels
 			if (data.levels) {
+				// console.log(data.levels[0].locations.length)
 				$.each(data.levels, function (index, value) {
 					// source 直接替换为本地文件svg
 					// var source = value.map;  // http://marketing.cyberspaceit.cn/interface/metromap/maps/linesh.svg
@@ -974,10 +977,10 @@
 										 根据html中svg中
 										 匹配到json文件中，找到站点数据
 										  <g> 
-										  	<circle id=> </circle>
+												<circle id=> </circle>
 										  <g/> 
 									 */
-									
+
 									//
 									var location = getLocationData($(this).attr('id'));
 									if (location) {
@@ -986,7 +989,7 @@
 										location.onmap = $(this);
 
 										// console.log('location', location)
-										
+
 
 										if (location.fill) {
 											$(this).css('fill', location.fill);
@@ -999,22 +1002,26 @@
 								});
 
 								// click event 站点的点击事件
-								$(self.o.selector).on('click mouseup touchend', function () {
+								$(self.o.selector).on('click', function () {
+									
 									//if (!self.dragging) 
-									{
-										var id = $(this).attr('id'); // 后去id ST140-ZJBL, 对应json文件唯一值
+										// console.log(e)
+								
+										// var id = $(this).attr('id'); // 后去id ST140-ZJBL, 对应json文件唯一值
 
 
-										showLocation(id, 600);
+										// showLocation(id, 600);
 
 										//trigger mapOnClick event
 										// console.log(self.el); 
 
+										// self.el id=mapplic
+
+										// console.log(111)
 										// el 是jq对象, 对应svg容器div,  触发自定义事件 
 										self.el.trigger("mapOnClick", { "pin": this });
-										
 
-									}
+									
 								});
 
 								// Support for the old map format
@@ -1032,7 +1039,13 @@
 									e.preventDefault();
 									self.el.trigger("mapOnClick", { "pin": this });
 								});
+
+								self.el.trigger('loaded'); //svg加载完毕
+
 							}).appendTo(layer);
+
+						
+
 							break;
 
 						// Other 
@@ -1169,7 +1182,7 @@
 				showLocation(self.o.landmark, 0);
 			}
 			else {
-				//Ĭ�ϳ�ʼ���Ŵ�С
+				//初始化时放大倍数 self.scale初始放大系数
 				zoomTo(0.5, 0.5, self.scale, 0);
 			}
 

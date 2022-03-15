@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0, minimum-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/map.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="http://marketing.cyberspaceit.cn/interface/metromap/mapplic/mapplic.css">
+    <link rel="stylesheet" type="text/css" href="http://service.shmetro.com/skin/css/yunyingline.css">
+    </link>
+    <!-- <link href="http://service.shmetro.com/skin/css/rpresult.css" rel="stylesheet" type="text/css" /> -->
+
+
+    <head>
+
+    <body>
+
+        <!-- svg容器 -->
+        <div id="mapplic"></div>
+        <!-- <div id="accessNull"></div> -->
+
+        <!-- 线路图脚本部分 Scripts -->
+        <script type="text/javascript" src="./assets/jquery.min.js"></script>
+        <!-- <script type="text/javascript"
+                src="http://marketing.cyberspaceit.cn/interface/metromap/js/hammer.min.js"></script> -->
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.easing.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.mousewheel.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script>
+        <script type="text/javascript" src="./assets/mapplic.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script>
+        <script type="text/javascript">
+      
+            $(document).ready(function () {
+
+                // 在页面内生成svg地铁图
+                $('#mapplic').mapplic({
+                    source: './assets/metromap.json', // 地铁站点位置信息
+                    selector: 'g > [id^=\'ST\']',
+                    // height: 1000, // svg 容器的高度
+                    height: '100vh',
+                    animate: false,
+                    sidebar: false, // 左侧边的搜索栏 - 站名搜索
+                    minimap: false,
+                    locations: true,
+                    deeplinking: true,
+                    fullscreen: true,
+                    hovertip: false,
+                    developer: false,
+                    zoom: true,
+                });
+
+                // 地铁线路设置渐变色
+                
+
+            })
+
+
+        </script>
+    </body>
+
+</html>

@@ -3,9 +3,9 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="全网图"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="shmetro"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)" sodipodi:docname="linesh.svg" x="0px" y="0px"
-   viewBox="0 0 2743.7 3158" style="enable-background:new 0 0 2743.7 3158;" xml:space="preserve">
+   viewBox="0 0 2743.7 3000" style="enable-background:new 0 0 2743.7 3158;" xml:space="preserve">
 
 
    <metadata id="metadata2429">
@@ -7512,6 +7512,8 @@
          class="st112" inkscape:connector-curvature="0" id="station1721" />
       <g id="g4503-4" transform="translate(-123.10851,1145.9323)">
       </g>
+
+      <!-- 17号线标签 -->
       <g id="g4549-1-0" transform="translate(-148.45368,1102.2115)">
          <path id="path795-0-4" inkscape:connector-curvature="0" class="st125"
             d="m 664.5,184.8 h -47.8 c -2.3,0 -4.2,-1.9 -4.2,-4.2 v -16.9 c 0,-2.3 1.9,-4.2 4.2,-4.2 h 47.8 c 2.3,0 4.2,1.9 4.2,4.2 v 16.9 c -0.1,2.3 -1.9,4.2 -4.2,4.2 z"
@@ -8062,59 +8064,43 @@
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 956.6,1539.4 -32.7,32.7" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01110112" />
+
+
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="-122.7" cx="1577.3" class="st68"
          id="station0138" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-YYXL" x="1486.4921" y="-53.540901">友谊西路</text>
-
-
 
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="-60.299999" cx="1577.3" class="st68"
          id="station0137" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-BAGL" x="1486.4913" y="8.3578997">宝安公路</text>
 
-
-
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="2.0999999" cx="1577.3" class="st68"
          id="station0136" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-GFXC" x="1486.4921" y="70.246902">共富新村</text>
-
-
 
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="64.5" cx="1577.3" class="st68"
          id="station0135" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-HLL" x="1503.5443" y="132.1539">呼兰路</text>
 
-
-
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="126.9" cx="1577.3" class="st68"
          id="station0134" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-THXC" x="1486.4749" y="194.04781">通河新村</text>
-
-
 
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="189.3" cx="1577.3" class="st68"
          id="station0133" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-GKL" x="1503.5316" y="255.9456">共康路</text>
 
-
-
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="251.7" cx="1577.3" class="st68"
          id="station0132" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-PPXC" x="1486.475" y="317.84369">彭浦新村</text>
-
-
 
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="314.10001" cx="1577.3" class="st68"
          id="station0131" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl0-1-WSL" x="1503.5316" y="379.74219">汶水路</text>
 
-
-
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="376.5" cx="1577.8" class="st68"
          id="station0130" /><text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65"
          id="lbl1-1-SHMXC" x="1469.4165" y="441.6391">上海马戏城</text>
-
-
 
       <circle style="fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9" cy="438.89999" cx="1577.8" class="st68"
          id="station0129" /><text style="font-size:18.5199px;line-height:100%;font-family:SimHei;stroke-width:1.02888"
@@ -8383,6 +8369,7 @@
    </g>
 
 
+   <!-- 所有站点，每个circle的id属性唯一对应 metromap.json中的数据站点信息 -->
    <g id="layer16" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="allstations"
       style="display:inline;opacity:1" sodipodi:insensitive="true">
       <g id="g4619" transform="translate(396.23336,-206.47701)">
