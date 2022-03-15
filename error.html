@@ -33,8 +33,8 @@
         <script type="text/javascript"
             src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.mousewheel.js"></script>
 
-        <script type="text/javascript"
-            src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script>
+        <!-- <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script> -->
 
         <script type="text/javascript" src="./assets/mapplic.js"></script>
 
@@ -88,7 +88,7 @@
 
                 // svgdom的创建要使用createElementNS这个api，否则浏览器不认
 
-                const createSVGELE = (tag, attrs = {}) => {
+                function createSVGELE(tag, attrs = {}) {
                     const ele = document.createElementNS('http://www.w3.org/2000/svg', tag)
                     for (let key in attrs) {
                         if (key === "style") {
@@ -106,76 +106,86 @@
                     return ele
                 }
 
-                // svg加载完成后
+                // svg加载完成
                 $('#mapplic').on('loaded', function () {
-
                     // 异常的站点
-                    const error = $('[id=ST10C-YSL]').get(0)
+                    const errST = ['ST83-RMGC', "ST240C-CYL", "ST4A0-DFTYZX", "ST12A-SJDD"]
 
-                    if (error) {
-                        console.log(error)
-                        const SVGRect = error.getBBox()
-                        const cx = SVGRect.x + SVGRect.width / 2
-                        const cy = SVGRect.y + SVGRect.height / 2
+                    errST.forEach(st => {
+                        const error = $(`[id=${st}]`).get(0)
 
-                        // const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+                        if (error) {
 
-                        // circle.setAttribute('cx', cx)
-                        // circle.setAttribute('cy', cy)
-                        // circle.setAttribute('r', 50)
-                        // circle.setAttribute('style', "fill: #dda520")
+                            const SVGRect = error.getBBox()
+                            const cx = SVGRect.x + SVGRect.width / 2
+                            const cy = SVGRect.y + SVGRect.height / 2
 
-                        const g = createSVGELE('g', { id: 'err_ST1400-LDL' })
-                        const defs = createSVGELE('defs')
-                        g.appendChild(defs)
-                        const radialGradient = createSVGELE('radialGradient', {
-                            id: 'radialGradient_ST1400-LDL',
-                            cx: '50%',
-                            cy: '50%',
-                            r: '50%',
-                            fx: '50%',
-                            fy: '50%'
-                        })
-                        defs.appendChild(radialGradient)
-                        radialGradient.appendChild(createSVGELE('stop', {
-                            offset: '0%',
-                            style: {
-                                "stop-color": "rgb(255,255,255)",
-                                "stop-opacity": 0
-                            }
-                        }))
-                        radialGradient.appendChild(createSVGELE('stop', {
-                            offset: '100%',
-                            style: {
-                                "stop-color": "rgb(255, 0, 64)",
-                                "stop-opacity": 1
-                            }
-                        }))
+                            // const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
 
-                        const circle = createSVGELE('circle', {
-                            cx,
-                            cy,
-                            r: 30,
-                            style: {
-                                fill: 'url(#radialGradient_ST1400-LDL)'
-                            }
-                        })
+                            // circle.setAttribute('cx', cx)
+                            // circle.setAttribute('cy', cy)
+                            // circle.setAttribute('r', 50)
+                            // circle.setAttribute('style', "fill: #dda520")
 
-                        circle.appendChild(createSVGELE('animate', {
-                            // attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" 
-                            attributeName: 'r',
-                            values: '30; 60; 30',
-                            begin: "0s",
-                            dur: '3s',
-                            repeatCount: 'indefinite'
-                        }))
+                            const g = createSVGELE('g', { id: `err_${st}` })
+                            const defs = createSVGELE('defs')
+                            g.appendChild(defs)
+                            const radialGradient = createSVGELE('radialGradient', {
+                                id: `radialGradient_${st}`,
+                                cx: '50%',
+                                cy: '50%',
+                                r: '50%',
+                                fx: '50%',
+                                fy: '50%'
+                            })
+                            defs.appendChild(radialGradient)
+                            radialGradient.appendChild(createSVGELE('stop', {
+                                offset: '0%',
+                                style: {
+                                    "stop-color": "rgb(255,255,255)",
+                                    "stop-opacity": 0
+                                }
+                            }))
+                            radialGradient.appendChild(createSVGELE('stop', {
+                                offset: '100%',
+                                style: {
+                                    "stop-color": "rgb(255, 0, 64)",
+                                    "stop-opacity": 1
+                                }
+                            }))
 
-                        g.appendChild(circle)
 
-                        // 找到这个元素父元素添加进去，如果父元素有transform属性，也可以保证中心点和异常站点的中心一致，保证位置正确
-                        error.parentNode.appendChild(g)
-                    }
 
+
+                            const circle = createSVGELE('circle', {
+                                cx,
+                                cy,
+                                r: 30,
+                                style: {
+                                    fill: `url(#radialGradient_${st})`
+                                }
+                            })
+
+               
+
+                            circle.appendChild(createSVGELE('animate', {
+                                // attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" 
+                                attributeName: 'r',
+                                values: '30; 50; 30',
+                                begin: "0s",
+                                dur: '3s',
+                                repeatCount: 'indefinite'
+                            }))
+
+                            g.appendChild(circle)
+
+                            // 1 找到这个元素父元素添加进去，如果父元素有transform属性，也可以保证中心点和异常站点的中心一致，保证位置正确
+                            // 2 这个站点元素本身就带有transform属性也要一并复制下来
+                            const trans = error.getAttribute('transform')
+                            if(trans) circle.setAttribute('transform', trans)
+                            error.parentNode.appendChild(g)
+                        }
+                    })
                 })
 
             })

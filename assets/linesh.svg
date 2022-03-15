@@ -2081,6 +2081,7 @@
       </g>
    </g> -->
 
+   <!-- 2号线 -->
    <g id="layer2" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line02"
       style="display:inline" sodipodi:insensitive="true">
       <g id="line02">
@@ -4308,7 +4309,7 @@
          d="m 1248.9,1145.5 -87.4,0.1" class="st102" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment09330934" />
       <path style="fill:none;stroke:#87caed;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
-         d="m 1161.6,1145.6 -52.1,52.5 -35.9,35.4 c -6.3,4.9 -10.8,10.4 -25.1,12.6 h -50.679" id="path7533"
+         d="m 1161.6,1145.6 -52.1,52.5 -35.9,35.4 c -6.3,4.9 -10.8,10.4 -25.1,12.6 h -50.679" id="segment09330934-1"
          inkscape:connector-curvature="0" />
       <path style="fill:none;stroke:#87caed;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="M 997.821,1246.1 H 913.49536" id="segment09320933" inkscape:connector-curvature="0" />

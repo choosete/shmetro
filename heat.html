@@ -38,7 +38,7 @@
         <script type="text/javascript"
             src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script>
         <script type="text/javascript">
-      
+
             $(document).ready(function () {
 
                 // 在页面内生成svg地铁图
@@ -58,8 +58,83 @@
                     zoom: true,
                 });
 
+                function createSVGELE(tag, attrs = {}) {
+                    const ele = document.createElementNS('http://www.w3.org/2000/svg', tag)
+                    for (let key in attrs) {
+                        if (key === "style") {
+                            let styleObj = attrs['style']
+                            let val = "";
+                            Object.keys(styleObj).forEach(key => {
+                                val += key + ":" + styleObj[key] + ";"
+                            })
+                            ele.setAttribute('style', val)
+                        } else {
+                            ele.setAttribute(key, attrs[key])
+                        }
+
+                    }
+                    return ele
+                }
+
                 // 地铁线路设置渐变色
-                
+                $('#mapplic').on('loaded', function () {
+
+                    // 地铁线全部置灰
+                    $('[id^=segment]').css({ stroke: '#ccc' })
+
+                    // 磁悬浮
+                    $('g[id=layer22]').children('path').css({ stroke: '#ccc' })
+
+                    // 金山铁路
+                    // $('g[id=layer20]').children('path').css({stroke: '#ccc'})
+
+
+                    // 以2号线为例
+                    // $('g[id=layer1]').children('path').css({stroke: '#8cc220'})
+                    const lineNo = 'line02';
+
+                    const segments = $(`g[id=${lineNo}]`).children('path[id^=segment]')
+                    const defs = createSVGELE('defs', {
+                        id: `linearGradient_${lineNo}`
+                    })
+                    $(`g[id=${lineNo}]`).append(defs)
+                    $.each(segments, function (index, path) {
+                        // 计算该段path路径的渐变色 path是原生svgdom对象
+                        const segmentId = path.getAttribute('id'); // 这个唯一标识符
+
+                        //获取segment的方向，横1，竖2，斜3 来决定渐变的方向
+                        const svgRect = path.getBBox()
+                        const flag = svgRect.height < 2 ? 1 : svgRect.width < 2 ? 2 : 3
+
+                        const linearGradient = createSVGELE('linearGradient', {
+                            id: `layer1_${segmentId}`,
+                            x1: '0%',
+                            y1: '0%',
+                            x2: flag == 2 ? '0%' : '100%',
+                            y2: flag == 1 ? '0%' : '100%'
+                        })
+                        linearGradient.appendChild(createSVGELE('stop', {
+                            // offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"
+                            offset: '0%',
+                            style: {
+                                'stop-color': 'rgb(255,255,0)',
+                                'stop-opacity': 1
+                            }
+                        }))
+                        linearGradient.appendChild(createSVGELE('stop', {
+                            // offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"
+                            offset: '100%',
+                            style: {
+                                'stop-color': 'rgb(255,0,0)',
+                                'stop-opacity': 1
+                            }
+                        }))
+
+                        defs.appendChild(linearGradient)
+
+                        $(path).css({ stroke: `url(#layer1_${segmentId})` })
+                    })
+                })
 
             })
 
