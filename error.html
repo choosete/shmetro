@@ -15,6 +15,15 @@
     </link>
     <!-- <link href="http://service.shmetro.com/skin/css/rpresult.css" rel="stylesheet" type="text/css" /> -->
 
+    <style>
+        #mapplic {
+            background-color: #16171F;
+        }
+
+        .mapplic-container {
+            background-color: #16171F;
+        }
+    </style>
 
     <head>
 
@@ -166,7 +175,7 @@
                                 }
                             })
 
-               
+
 
                             circle.appendChild(createSVGELE('animate', {
                                 // attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" 
@@ -182,7 +191,7 @@
                             // 1 找到这个元素父元素添加进去，如果父元素有transform属性，也可以保证中心点和异常站点的中心一致，保证位置正确
                             // 2 这个站点元素本身就带有transform属性也要一并复制下来
                             const trans = error.getAttribute('transform')
-                            if(trans) circle.setAttribute('transform', trans)
+                            if (trans) circle.setAttribute('transform', trans)
                             error.parentNode.appendChild(g)
                         }
                     })

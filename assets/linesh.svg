@@ -55,7 +55,7 @@
    </defs>
 
    <!-- svg 元素的内嵌的样式，类似html中的css -->
-   <style >
+   <style>
       .st0 {
          fill: #DDF1FC;
       }
@@ -73,7 +73,7 @@
       }
 
       .st3 {
-         font-size: 34.2001px;
+         font-size: 34px;
       }
 
       .st4 {
@@ -785,6 +785,16 @@
          stroke: #040000;
          stroke-width: 1.6595;
          stroke-miterlimit: 10;
+      }
+   </style>
+
+   <!-- style -->
+
+   <style>
+      text {
+         /* stroke: rgb(4, 4, 4); */
+         fill: rgb(128, 128, 128);
+         /* stroke-width: 0.1; */
       }
    </style>
 
@@ -1675,7 +1685,7 @@
       <path id="path7754" inkscape:connector-curvature="0" sodipodi:nodetypes="cczzzzscsc" class="st47"
          d="m 2272.3964,1715.08 v 254.8 c -0.4,16.2 13,34.1 32.6,34.1 19.6,0 161.1,-2 184.5,-2 23.4,0 33.6,6.4 33.6,32.3 v 105.4311 c 0,7.6131 3.3756,14.019 8.5355,19.0665 5.6838,5.5599 10.6232,9.4123 16.5763,15.3655 10.9716,11.0609 20.9375,21.6606 20.9375,38.8606 v 122.8"
          style="display:inline;fill:none;stroke:#ed6e01;stroke-width:8;stroke-opacity:1" />
-         
+
       <path style="display:inline;fill:none;stroke:#0e7572;stroke-width:8;stroke-opacity:1"
          d="m 2280.3964,1715.08 v 258.8 c 0,10.1776 10.3538,22.586 22.6,22.586 12.2462,0 154.5579,-2 182.5,-2 27.9421,0 45.3837,4.7204 45.3837,42.0837 v 91.1614 c 0,10.4991 -2.3163,18.2395 8.7518,29.0665 5.6838,5.56 10.6232,9.4123 16.5763,15.3655 10.9716,11.0609 20.9375,19.8489 20.9375,42.8606 v 120.8"
          class="st47" sodipodi:nodetypes="cczzzzscsc" inkscape:connector-curvature="0" id="path2870" />
@@ -7865,7 +7875,7 @@
 
 
 
-      <text style="font-size:17.4098px;line-height:100%;font-family:SimHei;display:inline;stroke-width:0.967212"
+      <text style="font-size:17.4098px;line-height:100%;font-family:SimHei;display:inline;"
          class="st37 st65" transform="matrix(0.96721249,0,0,1.033899,186.70325,-411.00283)" id="lbl3-13-SBHBWG"
          x="1373.4873" y="1549.3232">世博会博物馆</text>
 
@@ -7877,7 +7887,7 @@
 
 
       <text y="1442.4977" x="1327.3878"
-         style="font-size:18.2488px;line-height:100%;font-family:SimHei;display:inline;stroke-width:0.986357"
+         style="font-size:18.2488px;line-height:100%;font-family:SimHei;display:inline;"
          class="st37 st131" transform="matrix(0.98635692,0,0,1.0138318,186.70325,-411.00283)"
          id="lbl3-13-XTD">一大会址·新天地</text>
 
@@ -7904,7 +7914,7 @@
             cy="1207.7" cx="1059" class="st133" id="circle5487_1_-2" />
          <ellipse style="fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10" ry="9.6999998"
             rx="9.1999998" cy="1207.6" cx="1102.4" class="st71" id="circle5487_2_-4" />
-      </g><text style="font-size:18.007px;line-height:100%;font-family:SimHei;display:inline;stroke-width:0.99985"
+      </g><text style="font-size:18.007px;line-height:100%;font-family:SimHei;display:inline;"
          class="st37 st132" transform="scale(0.99985002,1.00015)" id="lbl3-13-ZRBWG" x="1536.8068"
          y="858.29211">自然博物馆</text>
 
@@ -8137,7 +8147,7 @@
 
 
 
-      <text style="font-size:18.4945px;line-height:100%;font-family:SimHei;stroke-width:1.02747" class="st37 st65"
+      <text style="font-size:18.4945px;line-height:100%;font-family:SimHei;" class="st37 st65"
          transform="scale(1.0274726,0.97326194)" id="lbl2-1-HSL" x="1263.9023" y="1147.351">衡山路</text>
 
 
@@ -8237,7 +8247,7 @@
       <path style="fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          d="m 1480.1,1003.4 c 4.7,0 8.5,3.6 8.5,7.9 v 26.1 c 0,4.4 -3.8,7.9 -8.5,7.9 v 0 c -4.7,0 -8.5,-3.5 -8.5,-7.9 v -26.1 c 0,-4.3 3.8,-7.9 8.5,-7.9 z"
          class="st70" inkscape:connector-curvature="0" id="station0121" /><text
-         style="font-size:18.3729px;line-height:100%;font-family:SimHei;stroke-width:1.00703" class="st37 st72"
+         style="font-size:18.3729px;line-height:100%;font-family:SimHei;" class="st37 st72"
          transform="scale(1.0070253,0.99302369)" id="lbl0-1-SXNL" x="1432.0188" y="1003.2717">陕西南路</text>
 
 
