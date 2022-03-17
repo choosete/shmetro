@@ -11,21 +11,15 @@
     <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/map.css"> -->
     <link rel="stylesheet" type="text/css"
         href="http://marketing.cyberspaceit.cn/interface/metromap/mapplic/mapplic.css">
-    <link rel="stylesheet" type="text/css" href="http://service.shmetro.com/skin/css/yunyingline.css">
-    </link>
+    <!-- <link rel="stylesheet" type="text/css" href="http://service.shmetro.com/skin/css/yunyingline.css">
+    </link> -->
     <!-- <link href="http://service.shmetro.com/skin/css/rpresult.css" rel="stylesheet" type="text/css" /> -->
 
-    <style>
+    <link rel="stylesheet" href="./assets/custom.css">
 
-        #mapplic {
-            background-color: #16171F;
-        }
+    <script src="./process.js"></script>
 
-        .mapplic-container {
-            background-color: #16171F;
-        }
-
-    </style>
+    <script src="./utils/lib.js"></script>
 
     <head>
 
@@ -93,32 +87,29 @@
                     // 地铁线全部置灰
                     $('[id^=segment]').css({ stroke: '#142f3a' })
 
-                    // 磁悬浮
-                    $('g[id=layer22]').children('path').css({ stroke: '#ccc' })
-
-                    // 金山铁路
-                    // $('g[id=layer20]').children('path').css({stroke: '#ccc'})
-
-
-                    // 以2号线为例
+                    // 1号线为例 window.mapJSON
                     // $('g[id=layer1]').children('path').css({stroke: '#8cc220'})
-                    const lineNo = 'line02';
-
-                    const segments = $(`g[id=${lineNo}]`).children('path[id^=segment]')
+                    const data = window.mapJSON['line01'];
                     const defs = createSVGELE('defs', {
-                        id: `linearGradient_${lineNo}`
+                        id: `linearGradient_line01`
                     })
-                    $(`g[id=${lineNo}]`).append(defs)
-                    $.each(segments, function (index, path) {
-                        // 计算该段path路径的渐变色 path是原生svgdom对象
-                        const segmentId = path.getAttribute('id'); // 这个唯一标识符
+                    $(`g[id=line01]`).append(defs)
 
-                        //获取segment的方向，横1，竖2，斜3 来决定渐变的方向
+                    Object.keys(data.subways).forEach(seg => {
+
+                        const path = $(`[id=${seg}]`).get(0)
+
+                        //获取segment的方向，横1，竖2, 决定渐变方向，简化处理，水平或者垂直两种
                         const svgRect = path.getBBox()
-                        const flag = svgRect.height < 2 ? 1 : svgRect.width < 2 ? 2 : 3
+                        const flag = svgRect.height < 2 ? 1 : 2
+
+                        // 两个端点的坐标值应该取 这段站的两个站点位置
+                        const st = data.subways[seg].st
+                        
 
                         const linearGradient = createSVGELE('linearGradient', {
-                            id: `layer1_${segmentId}`,
+                            id: `linearGradient_${seg}`,
+                            // gradientUnits: 'userSpaceOnUse',
                             x1: '0%',
                             y1: '0%',
                             x2: flag == 2 ? '0%' : '100%',
@@ -129,7 +120,6 @@
                             offset: '0%',
                             style: {
                                 'stop-color': 'rgb(255,255,0)',
-                                'stop-opacity': 1
                             }
                         }))
                         linearGradient.appendChild(createSVGELE('stop', {
@@ -137,14 +127,18 @@
                             offset: '100%',
                             style: {
                                 'stop-color': 'rgb(255,0,0)',
-                                'stop-opacity': 1
                             }
                         }))
 
                         defs.appendChild(linearGradient)
 
-                        $(path).css({ stroke: `url(#layer1_${segmentId})` })
+                        path.style.stroke = `url(#linearGradient_${seg})`
+                        // path.setAttribute('stroke', `url(#linearGradient_${seg})`)
+
+
                     })
+
+
                 })
 
             })

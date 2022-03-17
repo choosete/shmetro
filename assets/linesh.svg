@@ -384,13 +384,6 @@
          stroke-linejoin: round;
       }
 
-      .st67 {
-         fill: none;
-         stroke: #E3002B;
-         stroke-width: 10;
-         stroke-linecap: round;
-         stroke-linejoin: round;
-      }
 
       .st68 {
          fill: #FFFFFF;
@@ -6569,8 +6562,7 @@
    <!-- 所有站点，对应metromap.json文件中站点id信息 -->
    <g id="layer16" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="allstations"
       style="display:inline;opacity:1" sodipodi:insensitive="true">
-      <g id="g4619" transform="translate(396.23336,-206.47701)">
-      </g>
+
       <g id="STD-SHHCZ" transform="rotate(-45,1426.0395,507.55239)" inkscape:label="#STD-SHHCZ"
          class="mapplic-clickable">
 
