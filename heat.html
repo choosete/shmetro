@@ -104,16 +104,19 @@
                         const flag = svgRect.height < 2 ? 1 : 2
 
                         // 两个端点的坐标值应该取 这段站的两个站点位置
-                        const st = data.subways[seg].st
-                        
+                        const st = document.getElementById(data.subways[seg].st)
+                        const ed = document.getElementById(data.subways[seg].ed)
+
+                        const { x: x1, y: y1 } = getCenterPos(st)
+                        const { x: x2, y: y2 } = getCenterPos(ed)
 
                         const linearGradient = createSVGELE('linearGradient', {
                             id: `linearGradient_${seg}`,
-                            // gradientUnits: 'userSpaceOnUse',
-                            x1: '0%',
-                            y1: '0%',
-                            x2: flag == 2 ? '0%' : '100%',
-                            y2: flag == 1 ? '0%' : '100%'
+                            gradientUnits: 'userSpaceOnUse',
+                            x1,
+                            y1,
+                            x2,
+                            y2
                         })
                         linearGradient.appendChild(createSVGELE('stop', {
                             // offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"

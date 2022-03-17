@@ -5,7 +5,7 @@
 
 
 
-
+// 创建svg内的元素
 function createSVGELE(tag, attrs = {}) {
     const ele = document.createElementNS('http://www.w3.org/2000/svg', tag)
     for (let key in attrs) {
@@ -22,5 +22,46 @@ function createSVGELE(tag, attrs = {}) {
 
     }
     return ele
+}
+
+
+// 获取svg内某个元素的中心点坐标
+function getCenterPos(dom) {
+    const SVGRect = dom.getBBox()
+    const cx = SVGRect.x + SVGRect.width / 2
+    const cy = SVGRect.y + SVGRect.height / 2
+
+    // 计算translate
+    let node = dom
+    let regexp = /translate\((.*),(.*)\)/
+    let deltX = 0
+    let deltY = 0
+
+    while (node) {
+
+        console.log('node', node)
+        const trans = node.getAttribute('transform')
+
+        if (trans) {
+            let ret = regexp.exec(trans)
+            if (ret) {
+                deltX += parseFloat(ret[1] || 0)
+                deltY += parseFloat(ret[2] || 0)
+            }
+
+        }
+
+        node = node.parentNode
+
+        if (node.tagName === 'svg') {
+
+            break
+        }
+    }
+
+    return {
+        x: cx + deltX,
+        y: cy + deltY
+    }
 }
 
