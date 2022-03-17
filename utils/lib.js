@@ -24,27 +24,3 @@ function createSVGELE(tag, attrs = {}) {
     return ele
 }
 
-
-const svgPath = createSVGELE('path', {})
-
-const getBoundingClientRect = svgPath.getBoundingClientRect
-
-
-window.SVGPathElement.getBoundingClientRect = function () {
-
-    let self = this;
-
-    let result = getBoundingClientRect.apply(self)
-
-    let { width, height } = result;
-
-    if (width == 0) {
-        result.width = parseFloat(self.style.stroke)
-    }
-
-    if (height = 0) {
-        result.height = parseFloat(self.style.stroke)
-    }
-    return result
-}
-
