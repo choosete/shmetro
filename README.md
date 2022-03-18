@@ -35,6 +35,9 @@ getBBox() 可以后去svg元素的最小矩形信息，进而可以计算出中�
 
 1. path 路径设置线性渐变的时候，有的线段会没有效果，因为关键属性 gradientUnits 取值 userSpaceOnUse | objectBoundingBox，
 https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits ，关键方法getBoundingClientRect获取不到宽度或者高度
-使用 userSpaceOnUse 需要指定线段两个端点的具体坐标值，相对于svg viewBox坐标系下的
+使用 userSpaceOnUse 需要指定线段两个端点的具体坐标值，相对于svg viewBox坐标系下的, 要计算Path的x轴，y轴的投影长度，相对于svg坐标系的
+位置百分比
+
+
 
 
