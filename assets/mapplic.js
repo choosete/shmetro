@@ -40,7 +40,7 @@
 
 			self.x = 0;
 			self.y = 0;
-			self.scale = 1.2; // self 是Mapplic的 实例对象 
+			self.scale = 1.1; // self 是Mapplic的 实例对象 
 
 
 

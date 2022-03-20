@@ -10,3 +10,8 @@ html,body {
 .mapplic-clickable:not(g), g.mapplic-clickable > *{
     opacity: 1
 }
+
+.mapplic-element svg {
+    width: auto;
+    height: 100%;
+}

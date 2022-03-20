@@ -99,30 +99,255 @@ const map = {
             'ST28-LCL', 'ST8-TQ', 'ST8-NPDQ', 'ST88-XZNL', 'ST8-LBL', 'ST48-DAL', 'ST8-SHTYC'
         ],
         paths: [
+            'segment04010402', 'segment04020403', 'segment04030404', 'segment04040405', 'segment04050406',
+            'segment04060407', 'segment04070408', 'segment04080409', 'segment04090410', 'segment04100411',
+            'segment04110412', 'segment04120413', 'segment04130414', 'segment04140415', 'segment04150416',
+            'segment04160417', 'segment04170418', 'segment04180419', 'segment04190420', 'segment04200421',
+            'segment04210422', 'segment04220423', 'segment04230424', 'segment04240425', 'segment04250426',
+            'segment04010426',
+        ]
+    },
+    line05: {
+        st: 'ST11-XZ',
+        ed: 'ST10-MHKFQ',
+        ed2: 'ST10-FXXC',
+        stations: [
+            'ST11-XZ', 'ST10-CSL', 'ST10-YDL', 'ST10-ZQ', 'ST10-BQ', 'ST10-JCL', 'ST10-DCL',
+            'ST10-JPL', 'ST10-HNL', 'ST10-WJL', 'ST10-MHKFQ', 'ST10-DCL', 'ST10-ICL', 'ST10-XD',
+            'ST10-XT', 'ST10-FPDD', 'ST10-HCDL', 'ST10-WYL', 'ST10-JHH', 'ST10-FXXC'
+        ],
+        paths: [
+            'segment05010502', 'segment05020503', 'segment05030505', 'segment05050507', 'segment05070508',
+            'segment05080509', 'segment05090510', 'segment05100511', 'segment05110512', 'segment05120513',
+            'segment05090531', 'segment05310532', 'segment05320533', 'segment05330534', 'segment05340535',
+            'segment05350536', 'segment05360537', 'segment05370538'
+        ]
+    },
+    line06: {
+        st: 'ST4A0-DFTYZX',
+        ed: 'ST220-GCL',
+        stations: [
+            'ST4A0-DFTYZX', 'ST20-LYNL', 'ST20-SNL', 'ST20-HXXL', 'ST20-GQL', 'ST1020-DML', 'ST60-GKXL',
+            'ST20-LYXC', 'ST20-SHETYXZX', 'ST28-LCL', 'ST20-PDL', 'ST12A-SJDD', 'ST20-YSTYZX', 'ST20020-MSL',
+            'ST20-BYJL', 'ST20-DPL', 'ST2020-YSL', 'ST20-JQL', 'ST20-BXL', 'ST20-WLL', 'ST820-JFL',
+            'ST20-DJL', 'ST20-WZDD', 'ST20-ZHL', 'ST20-WGQBSQNZ', 'ST20-HJL', 'ST20-WGQBSQBZ', 'ST220-GCL'
+        ],
+        paths: [
+            'segment06210622', 'segment06220623', 'segment06230624', 'segment06240625', 'segment06250626',
+            'segment06260627', 'segment06270628', 'segment06280629', 'segment06290630', 'segment06300631',
+            'segment06310632', 'segment06320633', 'segment06330634', 'segment06340635', 'segment06350636',
+            'segment06360637', 'segment06370638', 'segment06380639', 'segment06390640', 'segment06400641',
+            'segment06440645', 'segment06420643', 'segment06430644', 'segment06410642', 'segment06450646',
+            'segment06460647', 'segment06470648'
+        ]
+    },
+    line07: {
+        st: 'ST40-MLH',
+        ed: 'ST40-HML',
+        stations: [
+            'ST40-MLH', 'ST40-LNXC', 'ST40-PGL', 'ST40-LH', 'ST4040-GCGY', 'ST40-QHL',
+            'ST40-SHDX', 'ST40-NCL', 'ST40-SDL', 'ST40-CZL', 'ST40-DCZ', 'ST40-XZL',
+            'ST40-DHSL', 'ST40-XCL', 'ST40-LGL', 'ST4C-ZPL', 'ST1040-CSL', 'ST40-CPL',
+            'ST2042-JAS', 'ST41-CSL', 'ST140-ZJBL', 'ST48-DAL', 'ST840-LHZL', 'ST40-HT',
+            'ST1040-CQL', 'STC0-YHL', 'ST40-YTL', 'ST60-GKXL', 'ST40-YGNL', 'ST40-JXL',
+            'ST40-FHL', 'ST28042-LYL', 'ST40-HML'
+
+        ],
+        paths: [
+            'segment07210722', 'segment07220723', 'segment07230724', 'segment07240725', 'segment07250726',
+            'segment07260727', 'segment07270728', 'segment07280729', 'segment07290730', 'segment07300731',
+            'segment07310732', 'segment07320733', 'segment07330734', 'segment07340735', 'segment07350736',
+            'segment07360737', 'segment07370738', 'segment07380739', 'segment07390740', 'segment07400741',
+            'segment07410742', 'segment07420743', 'segment07430744', 'segment07440745', 'segment07450746',
+            'segment07460747', 'segment07470748', 'segment07480749', 'segment07490750', 'segment07500751',
+            'segment07510752', 'segment07520753'
 
         ]
-    }
+    },
+    line08: {
+        st: 'ST10000000080-SDGL',
+        ed: 'ST80-SGL',
+        stations: [
+            'ST10000000080-SDGL', 'ST80-LHL', 'ST80-JYL', 'ST80-PJZ', 'ST80-UHL', 'ST80-LZXC',
+            'ST4A0-DFTYZX', 'ST80-YS', 'ST1080-CSL', 'STC0-YHL', 'ST80-ZHYYG', 'ST88-XZNL',
+            'ST180-LJBL', 'ST280-LXM', 'ST2080-DSJ', 'ST83-RMGC', 'ST880-QFL', 'ST80-ZXL',
+            'ST80-XZBL', 'ST84-HKZQC', 'ST80-QYL', 'ST280-SPL', 'ST80-ASXC', 'ST20080-JPL',
+            'ST80-HXL', 'ST80-YJZL', 'ST80-HXGY', 'ST80-XYL', 'ST80-NJL', 'ST80-SGL'
+        ],
+        paths: [
+            'segment08200821', 'segment08210822', 'segment08220823', 'segment08230824', 'segment08240825',
+            'segment08250826', 'segment08260827', 'segment08270828', 'segment08280829', 'segment08290830',
+            'segment08300831', 'segment08310832', 'segment08320833', 'segment08330834', 'segment08340835',
+            'segment08350836', 'segment08360837', 'segment08370838', 'segment08380839', 'segment08390840',
+            'segment08400841', 'segment08410842', 'segment08420843', 'segment08430844', 'segment08440845',
+            'segment08450846', 'segment08460847', 'segment08470848', 'segment08480849'
+        ]
+    },
+    line09: {
+        st: 'ST100-SJNZ',
+        ed: 'ST100-CL',
+        stations: [
+            'ST100-SJNZ', 'ST100-ZBC', 'ST100-SJTYZX', 'ST100-SJXC', 'ST100-SJDXC', 'ST100-DJ',
+            'ST100-SS', 'ST100-SJ', 'ST100-JT', 'ST100-ZCL', 'ST100-QB', 'ST100-XZL', 'ST100-HCL',
+            'ST100-CHJKFQ', 'ST4100-GLL', 'ST10C-YSL', 'ST501-XJH', 'ST140-ZJBL', 'ST900-JSL',
+            'ST100-DPQ', 'ST1100-MDL', 'ST180-LJBL', 'ST100-XNM', 'ST100-SCL', 'ST12A-SJDD',
+            'ST20100-SHKJG', 'ST20100-YGZL', 'ST100-FDL', 'ST2100-LTL', 'ST100-TEZL',
+            'ST100-JQ', 'ST100-JJL', 'ST900-JHL', 'ST100-GTL', 'ST100-MLL', 'ST100-CL'
+        ],
+        paths: [
+            'segment09180919', 'segment09190920', 'segment09200921', 'segment09210922', 'segment09220923',
+            'segment09230924', 'segment09240925', 'segment09250926', 'segment09260927', 'segment09270928',
+            'segment09280929', 'segment09290930', 'segment09300931', 'segment09320933', 'segment09330934-1',
+            'segment09330934', 'segment09340935', 'segment09350936', 'segment09360937', 'segment09370938',
+            'segment09380939', 'segment09390940', 'segment09400941', 'segment09410942', 'segment09420943',
+            'segment09430944', 'segment09440945', 'segment09450946', 'segment09460947', 'segment09470948',
+            'segment09480949', 'segment09490950', 'segment09500951', 'segment09510952'
+        ]
+    },
+    line10: {
+        st: 'ST200-JLL',
+        ed: 'ST10202-HQHCZ',
+        ed2: 'ST200-HZL',
+        stations: [
+            'ST200-JLL', 'ST220-GCL', 'ST200-GQ', 'ST200-GQX', 'ST200-SJL', 'ST200-GFL',
+            'ST200-XJWC', 'ST200-YGDL', 'ST200-SML', 'ST200-JWTYC', 'ST200-WJC', 'ST20200-GQL',
+            'ST200-TJDX', 'ST280-SPL', 'ST200-YDXC', 'ST208-HLL', 'ST200-SCBL', 'STA00-TTL',
+            'ST202-NJDL', 'ST2200-YY', 'ST280-LXM', 'ST1200-XTD', 'STA01-SXNL', 'ST200-SHTSG',
+            'ST600-JTDX', 'ST20C-HQL', 'ST200-SYL', 'ST200-YLL', 'ST200-SCL', 'ST200-LXL',
+            'ST200-SHDWY', 'ST200-HQHZL1H', 'ST202-HQHZL2H', 'ST10202-HQHCZ', 'ST200-LXL',
+            'ST200-LBXC', 'ST200-ZTL', 'ST200-HZL'
+        ],
+        paths: [
+            'segment10731074', 'segment10721073', 'segment10711072', 'segment10701071', 'segment10691070',
+            'segment10681069', 'segment10671068', 'segment10661067', 'segment10651066', 'segment10641065',
+            'segment10631064', 'segment10621063', 'segment10611062', 'segment10601061', 'segment10591060',
+            'segment10581059', 'segment10571058', 'segment10561057', 'segment10551056', 'segment10541055',
+            'segment10531054', 'segment10521053', 'segment10511052', 'segment10501051', 'segment10491050',
+            'segment10481049', 'segment10471048', 'segment10461047', 'segment10451046', 'segment10441045',
+            'segment10431044', 'segment10421043', 'segment10411042', 'segment10201045', 'segment10191020',
+            'segment10181019'
+
+        ]
+    },
+    line11: {
+        st: 'ST400-DSN',
+        ed: 'ST400-JDB',
+        ed2: 'ST400-HQ',
+        stations: [
+            'ST400-DSN', 'ST400-KXGL', 'ST400-XYL', 'ST8400-LSL', 'ST20400-YQ', 'ST400-PSL', 'ST400-SLD',
+            'ST400-SL', 'ST4A0-DFTYZX', 'ST400-LYL', 'ST400-YJL', 'STC00-LH', 'ST400-SHYYG', 'ST501-XJH',
+            'ST600-JTDX', 'ST402-JSL', 'ST1400-LDL', 'ST240C-CYL', 'ST400-FQL', 'ST2400-ZR', 'ST4400-SHXZ',
+            'ST400-LZY', 'ST400-QLSL', 'ST400-WWL', 'ST400-TPXC', 'ST400-NX', 'ST400-CXGL', 'ST400-ML',
+            'ST400-JDXC', 'ST400-BYL', 'ST400-JDX', 'ST400-JDB', 'ST400-JDXC', 'ST400-SHSCC', 'ST400-CJDL',
+            'ST400-SHQCC', 'ST400-AT', 'ST400-ZFL', 'ST400-GML', 'ST400-HQ'
+        ],
+        paths: [
+            'segment11621163', 'segment11611162', 'segment11601161', 'segment11591160', 'segment11581159',
+            'segment11561157', 'segment11551156', 'segment11541155', 'segment11531154', 'segment11521153',
+            'segment11511152', 'segment11501151', 'segment11491150', 'segment11481149', 'segment11471148',
+            'segment11461147', 'segment11451146', 'segment11441145', 'segment11431144', 'segment11421143',
+            'segment11411142', 'segment11401141', 'segment11391140', 'segment11381139', 'segment11371138',
+            'segment11361137', 'segment11351136', 'segment11341135', 'segment11331134', 'segment11321133',
+            'segment11311132', 'segment11201134', 'segment11191120', 'segment11181119', 'segment11171118',
+            'segment11161117', 'segment11151116', 'segment11141115'
+        ]
+    },
+    line12: {
+        st: '',
+        ed: '',
+        stations: [
+            'ST900-JHL', 'ST800-SJL', 'ST800-JJL', 'ST800-YGBL', 'ST820-JFL', 'ST800-DLUL', 'ST800-FXD',
+            'ST800-AGL', 'ST800-LCL', 'ST800-NGL', 'ST20800-JPGY', 'ST808-DLL', 'ST800-TLQ', 'ST800-GJKYZX',
+            'STA00-TTL', 'ST880-QFL', 'ST1801-HZL', 'ST1802-NJXL', 'STA01-SXNL', 'ST900-JSL', 'ST808-DMQL',
+            'ST840-LHZL', 'STC00-LH', 'ST804-LCL', 'ST801-CBL', 'ST4800-GLGY', 'ST800-HCL', 'ST800-HML',
+            'ST800-DLL', 'ST800-GDL', 'ST800-HXL', 'ST800-QXL'
+        ],
+        paths: [
+            'segment12501251', 'segment12491250', 'segment12481249', 'segment12471248', 'segment12461247',
+            'segment12451246', 'segment12441245', 'segment12431244', 'segment12421243', 'segment12411242',
+            'segment12401241', 'segment12391240', 'segment12381239', 'segment12371238', 'segment12361237',
+            'segment12351236', 'segment12341235', 'segment12331234', 'segment12321233', 'segment12311232',
+            'segment12301231', 'segment12291230', 'segment12281229', 'segment12271228', 'segment12261227',
+            'segment12251226', 'segment12241225', 'segment12231224', 'segment12221223', 'segment12211222',
+            'segment12201221'
+        ]
+    },
+    line13: {
+        st: 'ST1000-JYL',
+        ed: 'ST1000-ZJL',
+        stations: [
+            'ST1000-JYL', 'ST1000-JSJXL', 'ST1000-FZ', 'ST1000-QLSNL', 'ST1000-ZBL', 'ST5000-DDHL',
+            'ST100C-JSJL', 'ST1400-LDL', 'ST3000-WNL', 'ST1040-CSL', 'ST1000-JNL', 'ST1801-HZL',
+            'ST1000-ZRBWG', 'ST1802-NJXL', 'ST1000-HHZL', 'ST1200-XTD', 'ST1100-MDL', 'ST1000-SBHBWG',
+            'ST1000-SBDD', 'ST1040-CQL', 'ST1080-CSL', 'ST1020-DML', 'ST1000-HPL', 'ST1000-XNL', 'ST1000-BC',
+            'ST1000-CCL', 'ST21000LXL', 'ST9000-HXZL', 'ST1000-ZKL', 'ST1000-XLL', 'ST1000-ZJL'
+        ],
+        paths: [
+            'segment13211322', 'segment13221323', 'segment13231324', 'segment13241325', 'segment13251326',
+            'segment13261327', 'segment13271328', 'segment13281329', 'segment13291330', 'segment13301331',
+            'segment13311332', 'segment13321333', 'segment13331334', 'segment13341335', 'segment13351336',
+            'segment13361337', 'segment13371338', 'segment13381339', 'segment13391340', 'segment13401341',
+            'segment13411342', 'segment13421343', 'segment13431344', 'segment13441345', 'segment13451346',
+            'segment13461347', 'segment13471348', 'segment13481349', 'segment13491350', 'segment13501351'
+        ]
+    },
+    line14: {
+        st: '',
+        ed: '',
+        stations: [],
+        paths: []
+    },
+    line15: {
+        st: '',
+        ed: '',
+        stations: [],
+        paths: []
+    },
+    line16: {
+        st: '',
+        ed: '',
+        stations: [],
+        paths: []
+    },
+    line17: {
+        st: '',
+        ed: '',
+        stations: [],
+        paths: []
+    },
+    line18: {
+        st: '',
+        ed: '',
+        stations: [],
+        paths: []
+    },
+    // 浦江线
+    line41: {
+        st: '',
+        ed: '',
+        stations: [],
+        paths: []
+    },
 }
 
 
 // console.log(map.line01.paths.length)
 
-const paths = map.line01.paths;
-const stations = map.line01.stations;
-const subways = {}
-for (let i = 0; i < paths.length; i++) {
-    const element = paths[i]
-    subways[element] = {}
-    subways[element].st = stations[i]
-    subways[element].ed = stations[i + 1]
-}
 
 
-map.line01.subways = subways
+Object.keys(map).forEach(line => {
 
-// Object.keys(map).forEach(line => {
-//     console.log(line, map[line].stations.length, map[line].paths.length)
-// })
+    const paths = map[line].paths;
+    const stations = map[line].stations;
+    const subways = {}
+    for (let i = 0; i < paths.length; i++) {
+        const element = paths[i]
+        subways[element] = {}
+        subways[element].st = stations[i]
+        subways[element].ed = stations[i + 1]
+    }
+    map[line].subways = subways
+})
 
 
 // console.log(map)

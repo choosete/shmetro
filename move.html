@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0, minimum-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://marketing.cyberspaceit.cn/interface/metromap/css/map.css"> -->
+    <link rel="stylesheet" type="text/css"
+        href="http://marketing.cyberspaceit.cn/interface/metromap/mapplic/mapplic.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://service.shmetro.com/skin/css/yunyingline.css">
+    </link> -->
+    <!-- <link href="http://service.shmetro.com/skin/css/rpresult.css" rel="stylesheet" type="text/css" /> -->
+
+    <link rel="stylesheet" href="./assets/custom.css">
+
+    <script src="./process.js"></script>
+
+    <script src="./utils/lib.js"></script>
+
+
+    <head>
+
+
+
+    <body>
+
+        <!-- svg容器 -->
+        <div id="mapplic"></div>
+        <!-- <div id="accessNull"></div> -->
+
+        <!-- 线路图脚本部分 Scripts -->
+        <script type="text/javascript" src="./assets/jquery.min.js"></script>
+        <!-- <script type="text/javascript"
+                src="http://marketing.cyberspaceit.cn/interface/metromap/js/hammer.min.js"></script> -->
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.easing.js"></script>
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/jquery.mousewheel.js"></script>
+
+        <!--             
+        <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/smoothscroll.js"></script> -->
+
+
+        <script type="text/javascript" src="./assets/mapplic.js"></script>
+
+        <!-- <script type="text/javascript"
+            src="http://marketing.cyberspaceit.cn/interface/metromap/js/snap.svg-min.js"></script>
+         -->
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                // 在页面内生成svg地铁图
+                $('#mapplic').mapplic({
+                    source: './assets/metromap.json', // 地铁站点位置信息
+                    selector: 'g > [id^=\'ST\']',
+                    // height: 1000, // svg 容器的高度
+                    height: '100vh',
+                    animate: false,
+                    sidebar: false, // 左侧边的搜索栏 - 站名搜索
+                    minimap: false,
+                    locations: true,
+                    deeplinking: true,
+                    fullscreen: true,
+                    hovertip: false,
+                    developer: false,
+                    zoom: true,
+                });
+
+
+
+                // 地铁线路设置渐变色
+                $('#mapplic').on('loaded', function () {
+
+                    // 地铁线全部置灰
+                    $('[id^=segment]').css({ stroke: '#142f3a' })
+
+                    // 1号线为例 window.mapJSON
+                    // $('g[id=layer1]').children('path').css({stroke: '#8cc220'})
+                    const data = window.mapJSON['line02'];
+
+                    const defs = createSVGELE('defs', {
+                        id: `move_line02`
+                    })
+                    $(`g[id=line01]`).append(defs)
+
+                    Object.keys(data.subways).forEach(seg => {
+
+                        // if (seg != 'segment01370138') return
+
+                        const path = $(`[id=${seg}]`).get(0); // 这段地铁线路的渐变设置
+
+                        //获取segment的方向，横1，竖2, 决定渐变方向，简化处理，水平或者垂直两种
+                        // 获取起点，长宽数据, 这个起点始终是包围盒子的左上角,所以对于一path的方向而言，如果是从左到右，那么这个点就是
+                        // 起点，反之就是终点，实际的业务中是判断从一个站点到另一个站点的数据变化
+                        const svgRect = path.getBBox()
+                        const { height, width, x: sx, y: sy } = svgRect
+
+                        // console.log(`${seg}`, path) 
+
+                        const flag = width > height ? 1 : 2; // 横，竖表示渐变的方向
+
+                        let x1, y1, x2, y2;
+
+                        if (flag === 1) {
+                            let deltaW = width / 2700
+                            x1 = sx / 2700
+                            x2 = x1 + deltaW
+                            y1 = 0
+                            y2 = 0
+                        } else {
+                            let deltaH = height / 3000
+                            y1 = sy / 3000
+                            y2 = y1 + deltaH
+                            x1 = 0
+                            x2 = 0
+                        }
+
+                        // TODO 还有一个问题，这段path的方向怎么定，方向决定了渐变色的方向
+
+                        const linearGradient = createSVGELE('linearGradient', {
+                            id: `linearGradient_${seg}`,
+                            gradientUnits: 'userSpaceOnUse',
+                            x1: x1 * 100 + '%',
+                            y1: y1 * 100 + '%',
+                            x2: x2 * 100 + '%',
+                            y2: y2 * 100 + '%'
+                        })
+                        linearGradient.appendChild(createSVGELE('stop', {
+                            // offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"
+                            offset: '0%',
+                            style: {
+                                'stop-color': 'rgb(255,255,0)',
+                            }
+                        }))
+                        linearGradient.appendChild(createSVGELE('stop', {
+                            // offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"
+                            offset: '100%',
+                            style: {
+                                'stop-color': 'rgb(255,0,0)',
+                            }
+                        }))
+
+                        defs.appendChild(linearGradient)
+
+                        path.style.stroke = `url(#linearGradient_${seg})`
+
+                    })
+
+
+                })
+
+            })
+
+
+        </script>
+    </body>
+
+</html>

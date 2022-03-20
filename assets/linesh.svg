@@ -5,7 +5,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="shmetro"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)" sodipodi:docname="linesh.svg" x="0px" y="0px"
-   viewBox="0 0 2743.7 3000" style="" xml:space="preserve">
+   viewBox="0 0 2700 3000" style="" xml:space="preserve">
 
 
    <metadata id="metadata2429">
@@ -2107,6 +2107,7 @@
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1577.3,188.9 v 61.2" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01320133" />
+
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="M 1577.3,250.2 V 314" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01310132" />
@@ -2143,6 +2144,11 @@
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1377,1018.2 h 103.4" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01200121" />
+
+      <path d="M0, -5 L10,0 L0,5 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
+         <animateMotion path="m 1377,1018.2 h 103.4" begin="0s" dur="3s" repeatCount="indefinite" rotate="auto" />
+      </path>
+
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1374.9,1019.3 -89.1,88.9" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01190120" />
@@ -2171,6 +2177,10 @@
          d="m 956.6,1539.4 -32.7,32.7" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01110112" />
 
+      <path d="M0, -5 L10,0 L0,5 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
+         <animateMotion path="m 956.6,1539.4 -32.7,32.7" begin="0s" dur="3s" repeatCount="indefinite" rotate="auto">
+         </animateMotion>
+      </path>
 
       <text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65" id="lbl0-1-YYXL" x="1486.4921"
          y="-53.540901">友谊西路</text>
@@ -3023,10 +3033,10 @@
          d="M 845.5,1840.4 H 755.8"
          style="fill:none;stroke:#944d9a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment05110512" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st88"
-         d="M 755.8,1840.4 H 668.3"
+         d="M 755.8,1840.4 H 688.3"
          style="fill:none;stroke:#944d9a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment05120513" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st88"
-         d="m 668.2,1840.4 -59.2,0.2"
+         d="m 688.2,1840.4 -59.2,0.2"
          style="fill:none;stroke:#944d9a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
 
 
@@ -3143,7 +3153,7 @@
    </g>
 
    <!-- 6号线 -->
-   <g id="layer06" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line06"
+   <g id="line06" transform="translate(-186.70325,411.00283)" inkscape:groupmode="layer" inkscape:label="line06"
       style="display:inline">
 
       <path id="segment06320633" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st90"
@@ -3450,10 +3460,10 @@
          d="m 1374.3,1368.6 c 0.9,16.1 6.2,29.6 25.3,35.2 l 155.3,-0.3"
          style="fill:none;stroke:#ed6f00;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment07440745" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st95"
-         d="m 1554.9,1403.5 h 93.3"
+         d="m 1554.9,1403.5 h 63.3"
          style="fill:none;stroke:#ed6f00;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment07450746" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st95"
-         d="m 1648.1,1403.5 h 77.4"
+         d="m 1628.1,1403.5 h 87.4"
          style="fill:none;stroke:#ed6f00;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment07460747" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st95"
          d="m 1725.5,1403.5 h 59.8"
@@ -5687,7 +5697,7 @@
          d="m 916.49442,1966.1714 0.0562,33.941" id="segment15281529" inkscape:connector-curvature="0"
          inkscape:label="segment15281529" />
       <path style="fill:none;stroke:#b6a27a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-         d="m 916.61012,2035.1141 0.0575,35.3558" id="path3478" inkscape:connector-curvature="0"
+         d="m 916.61012,2035.1141 0.0575,35.3558" id="segment15271528" inkscape:connector-curvature="0"
          inkscape:label="segment15271528" />
       <path style="fill:none;stroke:#b6a27a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
          d="m 916.66762,2070.4699 0.0545,36.0619" id="segment15261527" inkscape:connector-curvature="0"
@@ -7581,10 +7591,10 @@
          d="m 2137.3532,865.49717 c -3.7999,0 -6.9,-3.6 -6.9,-8 v 0 c 0,-4.4 3.1,-8 6.9,-8 h 16.2001 c 3.7999,0 6.9,3.6 6.9,8 v 0 c 0,4.4 -3.1,8 -6.9,8 z"
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:label="#ST22000-CYL" />
-      <path id="ST20100-SHKJG" inkscape:connector-curvature="0" class="st71"
+      <path id="ST20100-YGZL" inkscape:connector-curvature="0" class="st71"
          d="m 2127.743,1051.1623 c -3.7999,0 -6.9,-3.6 -6.9,-8 v 0 c 0,-4.4 3.1,-8 6.9,-8 h 16.2001 c 3.7999,0 6.9,3.6 6.9,8 v 0 c 0,4.4 -3.1,8 -6.9,8 z"
          style="display:inline;fill:#fffefe;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
-         inkscape:label="#ST20100-SHKJG" />
+         inkscape:label="#ST20100-YGZL" />
       <circle inkscape:label="#ST20000-HT" style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9"
          cy="2125.9971" cx="2095.8284" id="ST20000-HT" />
       <circle inkscape:label="station1821" style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5" r="9"
@@ -7687,5 +7697,30 @@
          d="m 2219.0955,1661.4562 c -3.8,0 -6.9,-3.6 -6.9,-8 v 0 c 0,-4.4 3.1,-8 6.9,-8 h 16.2 c 3.8,0 6.9,3.6 6.9,8 v 0 c 0,4.4 -3.1,8 -6.9,8 z"
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10" />
    </g>
+
+   <!-- 
+   <defs>
+      <linearGradient id="test_001" gradientUnits="userSpaceOnUse" x1="-7%" y1="0" x2="7%" y2="0">
+         <stop offset="0%" style="stop-color:rgb(255,255,0);"></stop>
+         <stop offset="100%" style="stop-color:rgb(255,0,0);"></stop>
+      </linearGradient>
+   </defs>
+   <g id="test">
+      <path d="m500,500 h-400" stroke-width="10" stroke="url(#test_001)" />
+
+      <path style="fill: rgb(227, 0, 43); stroke: url(#linearGradient_segment01370138);
+          stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;" d="m 1577.3,-132 v 70.9" class="st66"
+         sodipodi:nodetypes="cc" inkscape:connector-curvature="0" id="segment01370138"></path>
+   </g> -->
+
+   <!-- move 共享父元素的transform -->
+   <!-- 
+
+   <path d="M0, 0 L20,5 L0,10 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
+      <animateMotion path="m 1676,897.3 -0.4,42.1 c 0.2,15.3 -6.6,26.3 -22.5,40.2" begin="0s" dur="3s"
+         repeatCount="indefinite" rotate="auto" />
+   </path>
+
+       -->
 
 </svg>

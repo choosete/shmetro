@@ -39,7 +39,7 @@ function getCenterPos(dom) {
 
     while (node) {
 
-        console.log('node', node)
+        // console.log('node', node)
         const trans = node.getAttribute('transform')
 
         if (trans) {
@@ -61,7 +61,8 @@ function getCenterPos(dom) {
 
     return {
         x: cx + deltX,
-        y: cy + deltY
+        y: cy + deltY,
+        
     }
 }
 

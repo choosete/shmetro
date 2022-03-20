@@ -40,4 +40,4 @@ https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits ，关�
 
 
 
-
+2. 线性渐变的计算规则，是只看元素的位置信息，不考虑它的transform属性的变化，也就是说，如果起点是负值，那么渐变的的起点也要设置在负值

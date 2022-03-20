@@ -18,20 +18,24 @@
   <g>
     <circle cx="80" cy="100" r="30" fill="red">
       <animateMotion path="m0 0 h300 z" begin="1s" dur="30s" repeatCount="indefinite" rotate="auto" />
+      <animate attributeName="r" values="20; 40; 20" begin="0s" dur="3s" repeatCount="indefinite" />
     </circle>
-  </g>
+    <path  d="M0, 0 L20,5 L0,10 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
+      <animateMotion  path="m0,50 h30 v30 z" begin="1s" dur="3s" repeatCount="indefinite" rotate="auto" />
+    </path>
+  </g>                                            
 
 
   <!-- 渐变 -->
-  <g>
+  <!-- <g>
     <defs>
       <linearGradient id="grad2" x1="0" y1="0" x2="50%" y2="0" gradientUnits="userSpaceOnUse">
         <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
         <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
       </linearGradient>
     </defs>
-    <path d="m100 0 h150 v30 h-150 z" fill="url(#grad2)" />
+    <path d="m0 0 h16 v30 h-16 z" fill="url(#grad2)" />
 
-  </g>
+  </g> -->
 
 </svg>
