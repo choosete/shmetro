@@ -15,3 +15,7 @@ html,body {
     width: auto;
     height: 100%;
 }
+
+.mapplic-clickable:not(g):hover, g.mapplic-clickable:hover > * {
+    opacity: 1;
+}
