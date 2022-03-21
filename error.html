@@ -117,6 +117,10 @@
 
                 // svg加载完成
                 $('#mapplic').on('loaded', function () {
+
+                    // 地铁线全部置灰
+                    $('[id^=segment]').css({ stroke: '#142f3a' })
+
                     // 异常的站点
                     const errST = ['ST83-RMGC', "ST240C-CYL", "ST4A0-DFTYZX", "ST12A-SJDD"]
 

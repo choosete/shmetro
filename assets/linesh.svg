@@ -4758,10 +4758,10 @@
          d="m 1198.3,1369.7 h -73.9"
          style="fill:none;stroke:#007860;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment12261227" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st114"
-         d="m 1124.4,1369.7 h -93.2"
+         d="m 1124.4,1369.7 h -113.2"
          style="fill:none;stroke:#007860;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment12251226" inkscape:connector-curvature="0" sodipodi:nodetypes="cc" class="st114"
-         d="M 1031.3,1369.7 H 941"
+         d="M 1001.3,1369.7 H 941"
          style="fill:none;stroke:#007860;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
       <path id="segment12241225" inkscape:connector-curvature="0" sodipodi:nodetypes="czcc" class="st114"
          d="m 902.4,1390.2 c 0,0 13.1,-13.1 19.6,-16.8 6.5,-3.7 13.4,-3.6 13.4,-3.6 h 5.6"
@@ -5982,8 +5982,8 @@
          style="fill:none;stroke:#98d1c0;stroke-width:10;stroke-linecap:round;stroke-linejoin:round" />
 
 
-      <text id="lbl3-16-XC" transform="translate(2257.752,2106.7502)" class="st36 st37 st117"
-         style="font-size:15.9088px;line-height:100%;font-family:SimHei;fill:#231815">新场</text>
+      <text id="lbl3-16-XC" transform="translate(2257.752,2106.7502)" class="st37 st117"
+         style="font-size:15.9088px;line-height:100%;font-family:SimHei;">新场</text>
 
 
       <text id="lbl0-16-LYL" class="st37 st119" style="font-size:16.276px;line-height:100%;font-family:SimHei"
@@ -6511,15 +6511,20 @@
 
       <path style="fill:none;stroke:#b3b3b3;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1517.7,2386.6 h 74.5 c 12.6,0 16.4,3.8 20.4,8.1" class="st134" inkscape:connector-curvature="0"
-         id="path10378" />
+         id="segment4101" />
       <path style="fill:none;stroke:#b3b3b3;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
-         d="m 1612.6,2394.8 c 5.3,5.8 6.5,18.8 6.5,18.8 v 72 101.4" class="st134" inkscape:connector-curvature="0"
-         id="path10376" />
+         d="m 1612.6,2394.8 c 5.3,5.8 6.5,18.8 6.5,18.8 v 72 " class="st134" inkscape:connector-curvature="0"
+         id="segment4102" />
+
       <path style="fill:none;stroke:#b3b3b3;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
-         d="m 1619.1,2587 v 104.3" class="st134" inkscape:connector-curvature="0" id="path10374" />
+         d="m 1619.1,2587 v -104.3" class="st134" inkscape:connector-curvature="0" id="segment4103" />
+
+      <path style="fill:none;stroke:#b3b3b3;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
+         d="m 1619.1,2587 v 104.3" class="st134" inkscape:connector-curvature="0" id="segment4104" />
+
       <path style="fill:none;stroke:#b3b3b3;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1619.1,2691.3 c 0,0 0.7,25.7 -25.7,25.7 h -77.5" class="st134" inkscape:connector-curvature="0"
-         id="path4751-0" />
+         id="segment4105" />
 
       <text id="lbl3-41-SDGL" class="st37 st135" style="font-size:18.0087px;line-height:100%;font-family:SimHei"
          x="1418.4329" y="2391.3347">沈杜公路</text>
@@ -7408,7 +7413,7 @@
          inkscape:transform-center-y="-22.635011" inkscape:label="ST4000-QAL" />
       <circle inkscape:transform-center-y="-22.635011"
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10" r="9" cy="407.73331"
-         cx="1098.6816" class="mapplic-clickable" id="ST4000-GIL" inkscape:label="ST4000-GIL" />
+         cx="1098.6816" class="mapplic-clickable" id="ST4000-GLL" inkscape:label="ST4000-GLL" />
       <circle id="ST4000-WWDL" class="mapplic-clickable" cx="1098.6816" cy="451.62695" r="9"
          style="display:inline;fill:#ffffff;stroke:#040000;stroke-width:1.5;stroke-miterlimit:10"
          inkscape:transform-center-y="-22.635011" inkscape:label="ST4000-WWDL" />

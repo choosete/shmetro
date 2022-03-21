@@ -292,41 +292,100 @@ const map = {
         ]
     },
     line14: {
-        st: '',
-        ed: '',
-        stations: [],
-        paths: []
+        st: 'ST2000-FB',
+        ed: 'ST2000-GQL',
+        stations: [
+            'ST2000-GQL', 'ST2000-LXL', 'ST2000-LTL', 'ST2000-JYL', 'ST2000-DBL', 'ST2000-ZXXC',
+            'ST2000-ZGL', 'ST6000-TCL', 'ST2400-ZR', 'ST2000-ZNL', 'ST240C-CYL', 'ST3000-WNL',
+            'ST2000-WDL', 'ST2042-JAS', 'ST2001-HPNL', 'ST2080-DSJ', 'ST2200-YY', 'ST2002-LJZ',
+            'ST2000-PDNL', 'ST2000-YSL', 'ST22000-CYL', 'ST2000-XPL', 'ST2020-YSL', 'ST2100-LTL',
+            'ST2000-HYL', 'ST2000-YHL', 'ST2000-PDZQC', 'ST2000-JUL', 'ST2000-GQL'
+        ],
+        paths: [
+            'segment14211422', 'segment14221423', 'segment14231424', 'segment14241425', 'segment14251426',
+            'segment14261427', 'segment14271428', 'segment14281429', 'segment14291430', 'segment14301431',
+            'segment14311432', 'segment14321433', 'segment14331434', 'segment14341435', 'segment14351436',
+            'segment14361437', 'segment14371438', 'segment14381439', 'segment14391440', 'segment14401441',
+            'segment14411442', 'segment14421443', 'segment14431445', 'segment14451446', 'segment14461447',
+            'segment14471448', 'segment14481449', 'segment14491450', 'segment14501451'
+        ]
     },
     line15: {
-        st: '',
-        ed: '',
-        stations: [],
-        paths: []
+        st: 'ST4040-GCGY',
+        ed: 'ST4000-ZZGXQ',
+        stations: [
+            'ST4040-GCGY', 'ST4000-JQL', 'ST4000-FXL', 'ST4000-NDL', 'ST4000-QAL', 'ST4000-GLL', 'ST4000-WWDL',
+            'ST4400-SHXZ', 'ST6000-TCL', 'ST4000-MLBL', 'ST5000-DDHL', 'ST4000-CFGY', 'ST4002-LSGL', 'ST4000-HBSL',
+            'ST4000-YHL', 'ST4000-WZL', 'ST4100-GLL', 'ST4800-GLGY', 'ST4005-SHNZ', 'ST4000-HDLGDX', 'ST4000-LXL',
+            'ST4000-ZML', 'ST4000-HJX', 'ST4000-HMNL', 'ST4000-JXL', 'ST4000-SJL', 'ST4000-SBL', 'ST4000-YJL',
+            'ST4000-YDL', 'ST4000-ZZGXQ'
+
+        ],
+        paths: [
+            'segment15491550', 'segment15481549', 'segment15471548', 'segment15461547', 'segment15451546',
+            'segment15441545', 'segment15431544', 'segment15421543', 'segment15411542', 'segment15401541',
+            'segment15391540', 'segment15381539', 'segment15371538', 'segment15361537', 'segment15351536',
+            'segment15341535', 'segment15331534', 'segment15321533', 'segment15311532', 'segment15301531',
+            'segment15281529', 'segment15291530', 'segment15271528', 'segment15261527', 'segment15251526',
+            'segment15241525', 'segment15231524', 'segment15221523', 'segment15211522'
+        ]
     },
     line16: {
-        st: '',
-        ed: '',
-        stations: [],
-        paths: []
+        st: 'ST28042-LYL',
+        ed: 'ST8000-DSH',
+        stations: [
+            'ST28042-LYL', 'ST9000-HXZL', 'ST8400-LSL', 'ST8000-ZPD', 'ST8000-HSHC', 'ST8000-HTD',
+            'ST8000-XC', 'ST8000-YSDWY', 'ST8000-HN', 'ST8000-HND', 'ST8000-SY', 'ST8000-LGDD', 'ST8000-DSH'
+        ],
+        paths: [
+            'segment16211622', 'segment16221623', 'segment16231624', 'segment16241625', 'segment16251626',
+            'segment16261627', 'segment16271628', 'segment16281629', 'segment16291630', 'segment16301631',
+            'segment16311632', 'segment16321633'
+        ]
     },
     line17: {
-        st: '',
-        ed: '',
-        stations: [],
-        paths: []
+        st: 'ST10000-DFLZ',
+        ed: 'ST10202-HQHCZ',
+        stations: [
+            'ST10000-DFLZ', 'ST10000-ZJJ', 'ST10000-DSHDD', 'ST10000-CYL', 'ST10000-QPXC', 'ST10000-HJL',
+            'ST10000-ZX', 'ST10000-JSZL', 'ST10000-XJBC', 'ST10000-XYL', 'ST10000-PLL', 'ST10000-CGL',
+            'ST10202-HQHCZ',
+        ],
+        paths: [
+            'segment17321733', 'segment17311732', 'segment17301731', 'segment17291730', 'segment17281729',
+            'segment17271728', 'segment17261727', 'segment17251726', 'segment17241725', 'segment17231724',
+            'segment17221723', 'segment17211722'
+        ]
     },
     line18: {
-        st: '',
-        ed: '',
-        stations: [],
-        paths: []
+        st: 'ST20004-CJNL',
+        ed: 'ST20000-HT',
+        stations: [
+            'ST20004-CJNL', 'ST20000-YGL', 'ST20000-SHCJDX', 'ST20000-FDDX', 'ST20200-GQL', 'ST20000-FSL',
+            'ST20080-JPL', 'ST20800-JPGY', 'ST20000-PLL', 'ST20000-DYL', 'ST22000-CYL', 'ST20020-MSL',
+            'ST20100-YGZL', 'ST20000-YCL', 'ST28042-LYL', 'ST20000-FXL', 'ST20000-BZL', 'ST21000LXL',
+            'ST20400-YQ', 'ST20000-KQ', 'ST20000-ZP', 'ST20000-FRL', 'ST20000-SML', 'ST20000-HTL',
+            'ST20000-XS', 'ST20000-HT'
+        ],
+        paths: [
+            'segment18451846', 'segment18441845', 'segment18431844', 'segment18421843', 'segment18411842',
+            'segment18401841', 'segment18391840', 'segment18381839', 'segment18371838', 'segment18361837',
+            'segment18351836', 'segment18341835', 'segment18331834', 'segment18321833', 'segment18311832',
+            'segment18301831', 'segment18291830', 'segment18281829', 'segment18271828', 'segment18261827',
+            'segment18251826', 'segment18241825', 'segment18231824', 'segment18221823', 'segment18211822'
+        ]
     },
     // 浦江线
     line41: {
-        st: '',
-        ed: '',
-        stations: [],
-        paths: []
+        st: 'ST10000000080-SDGL',
+        ed: 'ST10000000000-HZL',
+        stations: [
+            'ST10000000080-SDGL', 'ST10000000000-SLGL', 'ST10000000000-MRL', 'ST10000000000-PHL',
+            'ST10000000000-DCYL', 'ST10000000000-HZL'
+        ],
+        paths: [
+            'segment4101', 'segment4102', 'segment4103', 'segment4104', 'segment4105'
+        ]
     },
 }
 
