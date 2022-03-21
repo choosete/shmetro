@@ -2144,11 +2144,6 @@
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1377,1018.2 h 103.4" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01200121" />
-
-      <path d="M0, -5 L10,0 L0,5 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
-         <animateMotion path="m 1377,1018.2 h 103.4" begin="0s" dur="3s" repeatCount="indefinite" rotate="auto" />
-      </path>
-
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 1374.9,1019.3 -89.1,88.9" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01190120" />
@@ -2176,12 +2171,6 @@
       <path style="fill:none;stroke:#e3002b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
          d="m 956.6,1539.4 -32.7,32.7" class="st67" sodipodi:nodetypes="cc" inkscape:connector-curvature="0"
          id="segment01110112" />
-
-      <path d="M0, -5 L10,0 L0,5 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
-         <animateMotion path="m 956.6,1539.4 -32.7,32.7" begin="0s" dur="3s" repeatCount="indefinite" rotate="auto">
-         </animateMotion>
-      </path>
-
       <text style="font-size:18px;line-height:100%;font-family:SimHei" class="st37 st65" id="lbl0-1-YYXL" x="1486.4921"
          y="-53.540901">友谊西路</text>
 

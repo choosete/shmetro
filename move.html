@@ -75,7 +75,7 @@
 
 
 
-                // 地铁线路设置渐变色
+                // 地铁线路设置渐变色 二号线
                 $('#mapplic').on('loaded', function () {
 
                     // 地铁线全部置灰
@@ -88,7 +88,8 @@
                     const defs = createSVGELE('defs', {
                         id: `move_line02`
                     })
-                    $(`g[id=line01]`).append(defs)
+
+                    $(`g[id=line02]`).append(defs)
 
                     Object.keys(data.subways).forEach(seg => {
 
@@ -150,6 +151,36 @@
                         defs.appendChild(linearGradient)
 
                         path.style.stroke = `url(#linearGradient_${seg})`
+
+                        
+                        //小车动画
+
+                        /*
+                                <path d="M0, -5 L10,0 L0,5 Z" stroke="#000" stroke-width="1" id="map107train-622" fill="#8dd05c">
+                                        <animateMotion path="m 1377,1018.2 h 103.4" begin="0s" dur="3s" repeatCount="indefinite" rotate="auto" />
+                                </path>
+                         */
+                            
+                        // 每一段path后都要跟着一个小三角符号标识地铁运行
+
+                        const pathMove = createSVGELE('path', {
+                            d:'M0, -5 L10,0 L0,5 Z',
+                            stroke:"#000",
+                            'stroke-width':1,
+                            id: `tran-${seg}`,
+                            fill:'#8dd05c',
+                        })
+
+                        pathMove.appendChild(createSVGELE('animateMotion', {
+                            path: path.getAttribute('d'),
+                            begin:'0s',
+                            dur:"10s",
+                            repeatCount: 'indefinite',
+                            rotate: 'auto'
+                        }))
+
+                        path.parentElement.appendChild(pathMove)
+
 
                     })
 
